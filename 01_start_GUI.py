@@ -53,7 +53,7 @@ class Start:
 
     # check rounds function
     def check_rounds(self):
-        starting_rounds = self.start_amount_entry.get()
+        starting_rounds_set = self.start_amount_entry.get()
 
 
         # Set error background and colours (and assume no errors at the start
@@ -68,12 +68,12 @@ class Start:
         self.play_button.config(state=DISABLED)
 
         try:
-            starting_rounds = int(starting_rounds)
+            starting_rounds_set = int(starting_rounds_set)
 
-            if starting_rounds < 1:
+            if starting_rounds_set < 1:
                 has_errors = "yes"
                 error_feedback = "Sorry, the least amount of rounds you can play is 1"
-            elif starting_rounds > 10:
+            elif starting_rounds_set > 10:
                 has_errors = "yes"
                 error_feedback = "The most amount of rounds you can play is 10"
 
@@ -90,13 +90,13 @@ class Start:
 
         else:
             # set starting balance to amount entered by user
-            self.starting_rounds.set(starting_rounds)
+            self.starting_rounds.set(starting_rounds_set)
             self.start_amount_entry.config(bg="#b7e4c7")
 
 
     # to_game function
-    def to_game(self, starting_rounds):
-        starting_rounds = self.starting_rounds.get()
+    def to_game(self):
+        starting_rounds_set = self.starting_rounds.get()
 
         Game(self, starting_rounds)
 
