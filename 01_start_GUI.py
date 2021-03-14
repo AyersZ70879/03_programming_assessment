@@ -96,7 +96,7 @@ class Start:
 
     # to_game function
     def to_game(self):
-        starting_rounds_set = self.starting_rounds.get()
+        starting_rounds = self.starting_rounds_set.get()
 
         Game(self, starting_rounds)
 
