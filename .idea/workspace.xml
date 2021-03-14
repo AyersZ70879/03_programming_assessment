@@ -23,12 +23,14 @@
       <file leaf-file-name="01_start_GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/01_start_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="593">
-              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+            <state relative-caret-position="426">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1615754456698" expanded="true" signature="112:3774" ph="..." />
-                <marker date="1615754456698" expanded="true" signature="144:1812" ph="..." />
+                <marker date="1615754688068" expanded="true" signature="112:3871" ph="..." />
+                <marker date="1615754688068" expanded="true" signature="144:1812" ph="..." />
+                <marker date="1615754688068" expanded="true" signature="2744:3108" ph="..." />
+                <marker date="1615754688068" expanded="true" signature="3488:3603" ph="..." />
               </folding>
             </state>
           </provider>
@@ -37,7 +39,7 @@
       <file leaf-file-name="AA_complied_game_v1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/AA_complied_game_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2527">
+            <state relative-caret-position="-2782">
               <caret line="214" column="73" selection-start-line="214" selection-start-column="67" selection-end-line="214" selection-end-column="73" />
               <folding />
             </state>
@@ -47,8 +49,8 @@
       <file leaf-file-name="02_start_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/02_start_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="17" column="83" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="83" />
+            <state relative-caret-position="295">
+              <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -146,6 +148,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="03_programming_assessment" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/01_start_GUI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="02_start_GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../02_mystery_box_game" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="03_programming_assessment" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../02_mystery_box_game/02_start_GUI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -284,12 +303,14 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.01_start_GUI" />
+      <item index="1" class="java.lang.String" itemvalue="Python.02_start_GUI" />
     </list>
     <recent_temporary>
-      <list size="1">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="Python.01_start_GUI" />
+        <item index="1" class="java.lang.String" itemvalue="Python.02_start_GUI" />
       </list>
     </recent_temporary>
   </component>
@@ -315,7 +336,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14087513" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11953042" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -347,8 +368,8 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/02_start_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="17" column="83" selection-start-line="17" selection-start-column="82" selection-end-line="17" selection-end-column="83" />
+        <state relative-caret-position="295">
+          <caret line="66" column="53" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -357,7 +378,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/AA_complied_game_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2527">
+        <state relative-caret-position="-2782">
           <caret line="214" column="73" selection-start-line="214" selection-start-column="67" selection-end-line="214" selection-end-column="73" />
           <folding />
         </state>
@@ -365,12 +386,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_start_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        <state relative-caret-position="426">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1615754456698" expanded="true" signature="112:3774" ph="..." />
-            <marker date="1615754456698" expanded="true" signature="144:1812" ph="..." />
+            <marker date="1615754688068" expanded="true" signature="112:3871" ph="..." />
+            <marker date="1615754688068" expanded="true" signature="144:1812" ph="..." />
+            <marker date="1615754688068" expanded="true" signature="2744:3108" ph="..." />
+            <marker date="1615754688068" expanded="true" signature="3488:3603" ph="..." />
           </folding>
         </state>
       </provider>

@@ -41,12 +41,15 @@ class Start:
         self.amount_error_label.grid(row=1, columnspan=2, pady=5)
 
         # Play
-        self.play_frame = Frame(padx=10, pady=10)
+        self.play_frame = Frame(padx=5, pady=5, width=200)
         self.play_frame.grid(row=3)
 
         self.play_button = Button(self.play_frame, text="Play", command=lambda: self.to_game,
-                                        font="Arial 12 bold", bg="#ED6A5A")
+                                        font="Arial 12 bold", bg="#87986a")
         self.play_button.grid(row=0, column=0, pady=10)
+
+        # Disable play button at start
+        self.play_button.config(state=DISABLED)
 
     # check rounds function
     def check_rounds(self):
