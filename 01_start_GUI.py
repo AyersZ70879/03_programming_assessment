@@ -73,7 +73,7 @@ class Start:
             elif starting_rounds > 10:
                 has_errors = "yes"
                 error_feedback = "The most amount of rounds you can play is 10"
-                
+
             else:
                 self.play_button.config(state=NORMAL)
 
@@ -88,9 +88,7 @@ class Start:
         else:
             # set starting balance to amount entered by user
             self.starting_rounds.set(starting_rounds)
-            self.quiz_rounds_accept = Label(self.entry_error_frame, text=
-            "You will be played {} rounds.".format(starting_rounds),
-                                           font="Arial 10 italic")
+            self.start_amount_entry.config(bg="#b7e4c7")
 
 
     # to_game function
