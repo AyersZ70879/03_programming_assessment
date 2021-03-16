@@ -5,6 +5,14 @@ import csv
 
 rounds = 0
 
+
+# Make a list function
+def make_list(file_name):
+    file_name = file_name+ ".csv"  # add .csv to names to make it easier to call
+    list_name = open(file_name).read().splitlines()
+    return list_name
+
+
 class Start:
     def __init__(self, parent):
 
@@ -71,35 +79,23 @@ class Game:
                                         wrap=275, justify=LEFT)
         self.country_q_label.grid(row=0, column=0, pady=5)
 
-        # Country flag display
-        # photo = PhotoImage(file="question.gif")
-        # self.country_p_label = Label(self.country_frame, image=photo,
-        #                         padx=10, pady=10)
-        # self.country_p_label.photo = photo
-        # self.country_p_label.grid(row=1, column=0)
-
         # Country display label
-        country = []
-        capital = []
-        photo = []
         with open('country_capital.csv', 'r') as f:
             reader = csv.DictReader(f, delimiter=",")
             reader = list(reader)
 
-            # read file row by row
-            rowNr = 0
-            for row in reader:
-                # Skip the header row.
-                if rowNr >= 1:
-                    chosen = random.choice(reader)
-                    print(chosen)
 
-                # Increase the row number
-                rowNr = rowNr + 1
-
+        # Country display label
         self.country_label = Label(self.country_frame, text="--Country--", font="Arial 18 bold",
                                         wrap=275, justify=LEFT)
         self.country_label.grid(row=1, column=1, pady=5)
+
+        # Country flag display
+        # photo = PhotoImage(file="country_capital.csv", column=3)
+        # self.country_p_label = Label(self.country_frame, image=photo,
+        #                         padx=10, pady=10)
+        # self.country_p_label.photo = photo
+        # self.country_p_label.grid(row=1, column=0)
 
         # Capital goes here (row 3)
         self.capital_frame = Frame(self.game_frame)
@@ -108,9 +104,8 @@ class Game:
         self.capital_entry = Entry(self.capital_frame, font="Arial 16 bold")
         self.capital_entry.grid(row=0, column=0)
 
-
         # Check button goes here (row 4)
-        self.check_button = Button(self.game_frame, text="Check Answer", bg="#FDEA9B", font="Arial 15 bold",
+        self.check_button = Button(self.game_frame, text="Check Answer", bg="#adc178", font="Arial 15 bold",
                                   width=20, padx=10, pady=10, command=self.check_answer)
 
         # Bind button to <enter> (users can push to reveal the boxes)
@@ -122,7 +117,7 @@ class Game:
 
         start_text = "Round: {} ".format(rounds + 1)
 
-        self.balance_label = Label(self.game_frame, font="Arial 12 bold", fg="green",
+        self.balance_label = Label(self.game_frame, font="Arial 12 bold", fg="#80b918",
                                    text=start_text, wrap=300, justify=LEFT)
         self.balance_label.grid(row=5, pady=10)
 
@@ -131,15 +126,15 @@ class Game:
         self.help_export_frame.grid(row=6, pady=10)
 
         self.help_button = Button(self.help_export_frame, text="Help / Rules", font="Arial 15 bold",
-                                  bg="#808080", fg="white")
+                                  bg="#f6bd60", fg="white")
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#003366", fg="white")
+                                   bg="#468faf", fg="white")
         self.stats_button.grid(row=0, column=1, padx=2)
 
         # Quit Button
-        self.quit_button = Button(self.game_frame, text="Quit", fg="white", bg="#660000", font="Arial 15 bold",
+        self.quit_button = Button(self.game_frame, text="Quit", fg="white", bg="#f07167", font="Arial 15 bold",
                                   width=20, command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=7, pady=10)
 
