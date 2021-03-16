@@ -44,7 +44,7 @@ class Start:
         self.play_frame = Frame(padx=5, pady=5, width=200)
         self.play_frame.grid(row=3)
 
-        self.play_button = Button(self.play_frame, text="Play", command=lambda: self.to_game,
+        self.play_button = Button(self.play_frame, text="Play", command=self.to_game,
                                         font="Arial 12 bold", bg="#87986a")
         self.play_button.grid(row=0, column=0, pady=10)
 
@@ -93,12 +93,11 @@ class Start:
             self.starting_rounds.set(starting_rounds_set)
             self.start_amount_entry.config(bg="#b7e4c7")
 
-
     # to_game function
     def to_game(self):
-        starting_rounds = self.starting_rounds_set.get()
+        starting_rounds_set = self.starting_rounds.get()
 
-        Game(self, starting_rounds)
+        Game(self, starting_rounds_set)
 
         # hide start up window
         root.withdraw()
