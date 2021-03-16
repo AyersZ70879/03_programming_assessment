@@ -50,7 +50,7 @@ class Game:
         self.game_frame.grid()
 
         # Heading Row
-        self.heading_label = Label(self.game_frame, text="Play...", font="Arial 24 bold",
+        self.heading_label = Label(self.game_frame, text="Country - Capital \nGame", font="Arial 24 bold",
                                    padx=10, pady=10)
         self.heading_label.grid(row=0)
 
@@ -59,21 +59,45 @@ class Game:
                                                                                       "see how many you can get correct!")
         self.instructions_label.grid(row=1)
 
-        # Capital go here (row 2)
+        # Country go here (row 2)
 
+        # Set up country frame
         self.country_frame = Frame(self.game_frame)
         self.country_frame.grid(row=2, pady=10)
 
-        # photo = PhotoImage(file="question.gif")
+        # Country question label
+        self.country_q__label = Label(self.country_frame, text="What is the capital of: ", font="Arial 10 bold",
+                                        wrap=275, justify=LEFT)
+        self.country_q__label.grid(row=0, column=0, pady=5)
 
-        # Check button goes here (row 3)
+        # Country flag display
+        photo = PhotoImage(file="question.gif")
+        self.country_p_label = Label(self.country_frame, image=photo,
+                                  padx=10, pady=10)
+        self.country_p_label.photo = photo
+        self.country_p_label.grid(row=1, column=0)
+
+        # Country display label
+        self.country_label = Label(self.country_frame, text="--Country--", font="Arial 18 bold",
+                                        wrap=275, justify=LEFT)
+        self.country_label.grid(row=1, column=1, pady=5)
+
+        # Capital goes here (row 3)
+        self.capital_frame = Frame(self.game_frame)
+        self.capital_frame.grid(row=3, pady=10)
+
+        self.capital_entry = Entry(self.capital_frame, font="Arial 16 bold")
+        self.capital_entry.grid(row=0, column=0)
+
+
+        # Check button goes here (row 4)
         self.check_button = Button(self.game_frame, text="Check Answer", bg="#FDEA9B", font="Arial 15 bold",
                                   width=20, padx=10, pady=10, command=self.check_answer)
 
-        # bind button to <enter> (users can push to reveal the boxes)
+        # Bind button to <enter> (users can push to reveal the boxes)
         self.check_button.focus()
         self.check_button.bind('<Return>', lambda e: self.check_answer())
-        self.check_button.grid(row=3)
+        self.check_button.grid(row=4)
 
         # Balance label (row 4)
 
@@ -81,11 +105,11 @@ class Game:
 
         self.balance_label = Label(self.game_frame, font="Arial 12 bold", fg="green",
                                    text=start_text, wrap=300, justify=LEFT)
-        self.balance_label.grid(row=4, pady=10)
+        self.balance_label.grid(row=5, pady=10)
 
         # Help and Game stats button (row 5)
         self.help_export_frame = Frame(self.game_frame, bg="#DDF0FF")
-        self.help_export_frame.grid(row=5, pady=10)
+        self.help_export_frame.grid(row=6, pady=10)
 
         self.help_button = Button(self.help_export_frame, text="Help / Rules", font="Arial 15 bold",
                                   bg="#808080", fg="white")
@@ -98,7 +122,7 @@ class Game:
         # Quit Button
         self.quit_button = Button(self.game_frame, text="Quit", fg="white", bg="#660000", font="Arial 15 bold",
                                   width=20, command=self.to_quit, padx=10, pady=10)
-        self.quit_button.grid(row=6, pady=10)
+        self.quit_button.grid(row=7, pady=10)
 
     def check_answer(self):
         # retrieve of the balance from the initial function..
