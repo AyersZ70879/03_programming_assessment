@@ -1,6 +1,7 @@
 from tkinter import *
 from functools import partial   # To prevent unwanted windows
 import random
+import csv
 
 rounds = 0
 
@@ -66,18 +67,36 @@ class Game:
         self.country_frame.grid(row=2, pady=10)
 
         # Country question label
-        self.country_q__label = Label(self.country_frame, text="What is the capital of: ", font="Arial 10 bold",
+        self.country_q_label = Label(self.country_frame, text="What is the capital of: ", font="Arial 10 bold",
                                         wrap=275, justify=LEFT)
-        self.country_q__label.grid(row=0, column=0, pady=5)
+        self.country_q_label.grid(row=0, column=0, pady=5)
 
         # Country flag display
-        photo = PhotoImage(file="question.gif")
-        self.country_p_label = Label(self.country_frame, image=photo,
-                                  padx=10, pady=10)
-        self.country_p_label.photo = photo
-        self.country_p_label.grid(row=1, column=0)
+        # photo = PhotoImage(file="question.gif")
+        # self.country_p_label = Label(self.country_frame, image=photo,
+        #                         padx=10, pady=10)
+        # self.country_p_label.photo = photo
+        # self.country_p_label.grid(row=1, column=0)
 
         # Country display label
+        country = []
+        capital = []
+        photo = []
+        with open('country_capital.csv', 'r') as f:
+            reader = csv.DictReader(f, delimiter=",")
+            reader = list(reader)
+
+            # read file row by row
+            rowNr = 0
+            for row in reader:
+                # Skip the header row.
+                if rowNr >= 1:
+                    chosen = random.choice(reader)
+                    print(chosen)
+
+                # Increase the row number
+                rowNr = rowNr + 1
+
         self.country_label = Label(self.country_frame, text="--Country--", font="Arial 18 bold",
                                         wrap=275, justify=LEFT)
         self.country_label.grid(row=1, column=1, pady=5)
