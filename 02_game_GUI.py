@@ -84,6 +84,10 @@ class Game:
             reader = csv.DictReader(f, delimiter=",")
             reader = list(reader)
 
+            chosen = random.choice(reader)
+
+            for item in chosen:
+                print(item)
 
         # Country display label
         self.country_label = Label(self.country_frame, text="--Country--", font="Arial 18 bold",
