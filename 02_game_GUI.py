@@ -128,15 +128,13 @@ class Game:
         # retrieve of the balance from the initial function..
         print("in progress")
 
-
     def to_quit(self):
         root.destroy()
-
 
 
 # main routine
 if __name__ == "__main__":
     root = Tk()
-    root.title("Mystery Box Game")
+    root.title("Country - Capital Game")
     something = Start(root)
     root.mainloop()
