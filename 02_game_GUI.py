@@ -138,10 +138,12 @@ class Game:
             reader = csv.reader(f)
             reader = list(reader)
             randomised_reader = random.choice(reader)
-            for row in randomised_reader:
-                chosen = row
-                print(chosen)
-                print()
+            print(randomised_reader)
+            print(randomised_reader[0]) # to see if it will print the country seperatly
+            #for row in randomised_reader:
+            #    chosen = row
+             #   print(chosen)
+              #  print()
 
     def check_answer(self):
         # retrieve of the rounds from the initial function..
