@@ -146,7 +146,7 @@ class Game:
             for row in randomised_reader:
                 chosen = row
                 print(chosen)
-
+                print()
 
 
     def check_answer(self):
