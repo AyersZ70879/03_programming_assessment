@@ -4,7 +4,8 @@ import random
 import csv
 
 rounds = 0
-
+list1 = open("country_capital.csv")
+csv_list = csv.reader(list1)
 
 # Make a list function
 def make_list(file_name):
@@ -80,14 +81,16 @@ class Game:
         self.country_q_label.grid(row=0, column=0, pady=5)
 
         # Country display label
-        with open('country_capital.csv', 'r') as f:
-            reader = csv.DictReader(f, delimiter=",")
-            reader = list(reader)
+        get_chosen = {}
 
-            chosen = random.choice(reader)
+        # remove heading from csv output
+        for row in csv_list:
+            get_chosen[row[0]] = row[1]
 
-            for item in chosen:
-                print(item)
+        # Get chosen row from csv file
+        chosen = random.choice(get_chosen)
+
+
 
         # Country display label
         self.country_label = Label(self.country_frame, text="--Country--", font="Arial 18 bold",
