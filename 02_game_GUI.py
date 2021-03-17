@@ -81,15 +81,12 @@ class Game:
                                         wrap=275, justify=LEFT)
         self.country_q_label.grid(row=0, column=0, pady=5)
 
-        # Country label
-
-
         # Country display label
         self.country_label = Label(self.country_frame, text="--Country--", font="Arial 18 bold",
                                         wrap=275, justify=LEFT)
         self.country_label.grid(row=1, column=1, pady=5)
 
-        # Country flag display
+        # Country flag display - might have to be moved to ccp function and have the display below
         # photo = PhotoImage(file="country_capital.csv", column=3)
         # self.country_p_label = Label(self.country_frame, image=photo,
         #                         padx=10, pady=10)
@@ -112,9 +109,7 @@ class Game:
         self.check_button.bind('<Return>', lambda e: self.check_answer())
         self.check_button.grid(row=4)
 
-
         # Balance label (row 4)
-
         start_text = "Round: {} ".format(rounds + 1)
 
         self.balance_label = Label(self.game_frame, font="Arial 12 bold", fg="#80b918",
@@ -148,9 +143,8 @@ class Game:
                 print(chosen)
                 print()
 
-
     def check_answer(self):
-        # retrieve of the balance from the initial function..
+        # retrieve of the rounds from the initial function..
         print("in progress")
 
     def to_quit(self):
