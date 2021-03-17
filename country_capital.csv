@@ -1,4 +1,5 @@
-﻿Afghanistan,Kabul,AF-flag.gif
+﻿country,capital,image
+Afghanistan,Kabul,AF-flag.gif
 Albania,Tirana,AL-flag.gif
 Algeria,Algiers,AG-flag.gif
 Andorra,Andorra la Vella,AN-flag.gif
@@ -32,9 +33,9 @@ Central African Republic,Bangui,CT-flag.gif
 Chad,N'Djamena,CD-flag.gif
 Chile,Santiago,CL-flag.gif
 China,Beijing,CH-flag.gif
-Colombia,Bogotá,CO-flag.gif
+Colombia,Bogota,CO-flag.gif
 Comoros,Moroni,CN-flag.gif
-Costa Rica,San José,CS-flag.gif
+Costa Rica,San Jose,CS-flag.gif
 Croatia,Zagreb,HR-flag.gif
 Cuba,Havana,CU-flag.gif
 Cyprus,Nicosia,CY-flag.gif
@@ -97,7 +98,7 @@ Macedonia,Skopje,MK-flag.gif
 Madagascar,Antananarivo,MA-flag.gif
 Malawi,Lilongwe,MI-flag.gif
 Malaysia,Kuala Lumpur,MY-flag.gif
-Maldives,Malé,MV-flag.gif
+Maldives,Male,MV-flag.gif
 Mali,Bamako,ML-flag.gif
 Malta,Valletta,MT-flag.gif
 Mauritania,Nouakchott,MR-flag.gif
@@ -126,7 +127,7 @@ Pakistan,Islamabad,PK-flag.gif
 Palau,Ngerulmud,PS-flag.gif
 Panama,Panama City,PM-flag.gif
 Papua New Guinea,Port Moresby,PP-flag.gif
-Paraguay,Asunción,PA-flag.gif
+Paraguay,Asuncion,PA-flag.gif
 Peru,Lima,PE-flag.gif
 Philippines,Manila,PH-flag.gif
 Poland,Warsaw,PL-flag.gif
@@ -155,7 +156,7 @@ Taiwan,Taipei,TW-flag.gif
 Tajikistan,Dushanbe,TJ-flag.gif
 Tanzania,Dodoma,TZ-flag.gif
 Thailand,Bangkok,TH-flag.gif
-Togo,Lomé,TO-flag.gif
+Togo,Lome,TO-flag.gif
 Turkey,Ankara,TU-flag.gif
 Uganda,Kampala,UG-flag.gif
 Ukraine,Kiev,UK-flag.gif

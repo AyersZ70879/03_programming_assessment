@@ -7,6 +7,7 @@ rounds = 0
 list1 = open("country_capital.csv")
 csv_list = csv.reader(list1)
 
+
 # Make a list function
 def make_list(file_name):
     file_name = file_name+ ".csv"  # add .csv to names to make it easier to call
@@ -80,7 +81,8 @@ class Game:
                                         wrap=275, justify=LEFT)
         self.country_q_label.grid(row=0, column=0, pady=5)
 
-        # Country display label
+        # Country label
+
 
         # Country display label
         self.country_label = Label(self.country_frame, text="--Country--", font="Arial 18 bold",
@@ -103,12 +105,13 @@ class Game:
 
         # Check button goes here (row 4)
         self.check_button = Button(self.game_frame, text="Check Answer", bg="#adc178", font="Arial 15 bold",
-                                  width=20, padx=10, pady=10, command=self.check_answer)
+                                  width=20, padx=10, pady=10, command=self.get_ccp)
 
         # Bind button to <enter> (users can push to reveal the boxes)
         self.check_button.focus()
         self.check_button.bind('<Return>', lambda e: self.check_answer())
         self.check_button.grid(row=4)
+
 
         # Balance label (row 4)
 
@@ -136,14 +139,12 @@ class Game:
         self.quit_button.grid(row=7, pady=10)
 
     def get_ccp(self):
-        get_chosen = {}
+        with open("country_capital.csv") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                print(row)
+                
 
-        # remove heading from csv output
-        for row in csv_list:
-            get_chosen[row[0]] = row[1]
-
-        # Get chosen row from csv file
-        chosen = random.choice(get_chosen[1])
 
     def check_answer(self):
         # retrieve of the balance from the initial function..
