@@ -81,16 +81,6 @@ class Game:
         self.country_q_label.grid(row=0, column=0, pady=5)
 
         # Country display label
-        get_chosen = {}
-
-        # remove heading from csv output
-        for row in csv_list:
-            get_chosen[row[0]] = row[1]
-
-        # Get chosen row from csv file
-        chosen = random.choice(get_chosen)
-
-
 
         # Country display label
         self.country_label = Label(self.country_frame, text="--Country--", font="Arial 18 bold",
@@ -144,6 +134,16 @@ class Game:
         self.quit_button = Button(self.game_frame, text="Quit", fg="white", bg="#f07167", font="Arial 15 bold",
                                   width=20, command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=7, pady=10)
+
+    def get_ccp(self):
+        get_chosen = {}
+
+        # remove heading from csv output
+        for row in csv_list:
+            get_chosen[row[0]] = row[1]
+
+        # Get chosen row from csv file
+        chosen = random.choice(get_chosen[1])
 
     def check_answer(self):
         # retrieve of the balance from the initial function..
