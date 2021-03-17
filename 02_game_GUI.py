@@ -141,9 +141,12 @@ class Game:
     def get_ccp(self):
         with open("country_capital.csv") as f:
             reader = csv.reader(f)
-            for row in reader:
-                print(row)
-                
+            reader = list(reader)
+            randomised_reader = random.choice(reader)
+            for row in randomised_reader:
+                chosen = row
+                print(chosen)
+
 
 
     def check_answer(self):
