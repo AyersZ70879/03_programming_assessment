@@ -5,12 +5,6 @@ import csv
 
 rounds = 0
 
-# Make a list function
-def make_list(file_name):
-    file_name = file_name+ ".csv"  # add .csv to names to make it easier to call
-    list_name = open(file_name).read().splitlines()
-    return list_name
-
 
 class Start:
     def __init__(self, parent):
@@ -74,7 +68,7 @@ class Game:
         self.country_frame.grid(row=2, pady=10)
 
         # Country question label
-        self.country_q_label = Label(self.country_frame, text="What is the capital of: ", font="Arial 10 bold",
+        self.country_q_label = Label(self.country_frame, text="Press Start to play", font="Arial 10 bold",
                                         wrap=275, justify=LEFT)
         self.country_q_label.grid(row=0, column=0, pady=5)
 
@@ -132,7 +126,10 @@ class Game:
 
     # retrieve information from csv file function
     def get_ccp(self):
+        # When user plays game, change labels
         self.check_button.config(text="Check Answer")
+        self.country_q_label.config(text="What is the capital of: ")
+
         with open("00_country_capital.csv") as f:
             reader = csv.reader(f)
             reader = list(reader)
