@@ -130,6 +130,7 @@ class Game:
         self.check_button.config(text="Check Answer")
         self.country_q_label.config(text="What is the capital of: ")
 
+        # Open csv file and get provided information
         with open("00_country_capital.csv") as f:
             reader = csv.reader(f)
             reader = list(reader)
@@ -141,8 +142,10 @@ class Game:
             image_file = randomised_reader[2]
 
             # -- Display for game --
+
             # country label
             self.country_label.config(text=country)
+
             # display image
             photo = PhotoImage(file=image_file)
             self.country_p_label.config(image=photo)
