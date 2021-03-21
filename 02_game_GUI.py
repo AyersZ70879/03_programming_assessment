@@ -7,8 +7,6 @@ rounds = 0
 list1 = open("country_capital.csv")
 csv_list = csv.reader(list1)
 
-
-
 # Make a list function
 def make_list(file_name):
     file_name = file_name+ ".csv"  # add .csv to names to make it easier to call
@@ -107,6 +105,7 @@ class Game:
         # Bind button to <enter> (users can push to reveal the boxes)
         self.check_button.focus()
         self.check_button.bind('<Return>', lambda e: self.get_ccp())
+        # grid setup of button
         self.check_button.grid(row=4)
 
         # Balance label (row 4)
