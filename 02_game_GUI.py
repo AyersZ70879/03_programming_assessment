@@ -133,6 +133,7 @@ class Game:
                                   width=20, command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=7, pady=10)
 
+    # retrieve information from csv file function
     def get_ccp(self):
         self.check_button.config(text="Check Answer")
         with open("country_capital.csv") as f:
@@ -140,12 +141,12 @@ class Game:
             reader = list(reader)
             randomised_reader = random.choice(reader)
 
-            # seperate into variables
+            # Split into variables
             country = randomised_reader[0]
             capital_ans = randomised_reader[1]
             image_file = randomised_reader[2]
 
-            # display for game
+            # -- Display for game --
             # country label
             self.country_label.config(text=country)
             # display image
@@ -153,11 +154,11 @@ class Game:
             self.country_p_label.config(image=photo)
             self.country_p_label.photo = photo
 
-
-    def check_answer(self):
-        # retrieve of the rounds from the initial function..
-        self.rounds.set(+1)
-        print("in progress")
+    # MIGHT NOT NEED THIS FUNCTION -- TBD
+    # def check_answer(self):
+    #    # retrieve of the rounds from the initial function..
+    #    self.rounds.set(+1)
+    #    print("in progress")
 
     def to_quit(self):
         root.destroy()
