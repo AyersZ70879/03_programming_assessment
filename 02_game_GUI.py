@@ -8,6 +8,7 @@ list1 = open("country_capital.csv")
 csv_list = csv.reader(list1)
 
 
+
 # Make a list function
 def make_list(file_name):
     file_name = file_name+ ".csv"  # add .csv to names to make it easier to call
@@ -82,16 +83,15 @@ class Game:
         self.country_q_label.grid(row=0, column=0, pady=5)
 
         # Country display label
-        self.country_label = Label(self.country_frame, text="--Country--", font="Arial 18 bold",
+
+        self.country_label = Label(self.country_frame, text="", font="Arial 18 bold",
                                         wrap=275, justify=LEFT)
         self.country_label.grid(row=1, column=1, pady=5)
 
         # Country flag display - might have to be moved to ccp function and have the display below
-        # photo = PhotoImage(file="country_capital.csv", column=3)
-        # self.country_p_label = Label(self.country_frame, image=photo,
-        #                         padx=10, pady=10)
-        # self.country_p_label.photo = photo
-        # self.country_p_label.grid(row=1, column=0)
+        self.country_p_label = Label(self.country_frame, image="",
+                                padx=10, pady=10)
+        self.country_p_label.grid(row=1, column=0)
 
         # Capital goes here (row 3)
         self.capital_frame = Frame(self.game_frame)
@@ -138,15 +138,24 @@ class Game:
             reader = csv.reader(f)
             reader = list(reader)
             randomised_reader = random.choice(reader)
-            print(randomised_reader)
-            print(randomised_reader[0]) # to see if it will print the country seperatly
-            #for row in randomised_reader:
-            #    chosen = row
-             #   print(chosen)
-              #  print()
+
+            # seperate into variables
+            country = randomised_reader[0]
+            capital_ans = randomised_reader[1]
+            image_file = randomised_reader[2]
+
+            # display for game
+            # country label
+            self.country_label.config(text=country)
+            # display image
+            photo = PhotoImage(file=image_file)
+            self.country_p_label.config(image=photo)
+            self.country_p_label.photo = photo
+
 
     def check_answer(self):
         # retrieve of the rounds from the initial function..
+        self.rounds.set(+1)
         print("in progress")
 
     def to_quit(self):
