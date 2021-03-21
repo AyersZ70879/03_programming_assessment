@@ -101,12 +101,12 @@ class Game:
         self.capital_entry.grid(row=0, column=0)
 
         # Check button goes here (row 4)
-        self.check_button = Button(self.game_frame, text="Check Answer", bg="#adc178", font="Arial 15 bold",
+        self.check_button = Button(self.game_frame, text="Start Game", bg="#adc178", font="Arial 15 bold",
                                   width=20, padx=10, pady=10, command=self.get_ccp)
 
         # Bind button to <enter> (users can push to reveal the boxes)
         self.check_button.focus()
-        self.check_button.bind('<Return>', lambda e: self.check_answer())
+        self.check_button.bind('<Return>', lambda e: self.get_ccp())
         self.check_button.grid(row=4)
 
         # Balance label (row 4)
@@ -134,6 +134,7 @@ class Game:
         self.quit_button.grid(row=7, pady=10)
 
     def get_ccp(self):
+        self.check_button.config(text="Check Answer")
         with open("country_capital.csv") as f:
             reader = csv.reader(f)
             reader = list(reader)
