@@ -4,8 +4,6 @@ import random
 import csv
 
 rounds = 0
-list1 = open("country_capital.csv")
-csv_list = csv.reader(list1)
 
 # Make a list function
 def make_list(file_name):
@@ -135,7 +133,7 @@ class Game:
     # retrieve information from csv file function
     def get_ccp(self):
         self.check_button.config(text="Check Answer")
-        with open("country_capital.csv") as f:
+        with open("00_country_capital.csv") as f:
             reader = csv.reader(f)
             reader = list(reader)
             randomised_reader = random.choice(reader)
