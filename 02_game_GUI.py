@@ -177,6 +177,8 @@ class Game:
     def check(self):
         # retrieve of the rounds from the initial function..
         self.rounds = + 1
+
+        # For testing purposes  - to be removed later
         print("in progress")
 
     def to_quit(self):
