@@ -65,7 +65,7 @@ class Game:
 
         # Set up country frame
         self.country_frame = Frame(self.game_frame)
-        self.country_frame.grid(row=2, pady=10)
+        self.country_frame.grid(row=2, pady=10, padx=10)
 
         # Country question label
         self.country_q_label = Label(self.country_frame, text="Press Start to play", font="Arial 10 bold",
@@ -85,34 +85,43 @@ class Game:
 
         # Capital goes here (row 3)
         self.capital_frame = Frame(self.game_frame)
-        self.capital_frame.grid(row=3, pady=10)
+        self.capital_frame.grid(row=3, pady=10, padx=10)
 
         self.capital_entry = Entry(self.capital_frame, font="Arial 16 bold")
         self.capital_entry.grid(row=0, column=0)
 
-        # Check button goes here (row 4)
-        self.check_button = Button(self.game_frame, text="Start Game", bg="#adc178", font="Arial 15 bold",
+        # Check button goes here (row 3)
+        self.check_button = Button(self.capital_frame, text="Check", bg="#8ecae6", font="Arial 15 bold",
+                                   padx=5, pady=5, command=self.check)
+        self.check_button.grid(row=0, column=1)
+        # Disable check button before user starts game
+        self.check_button.config(state=DISABLED)
+
+
+        # Capital answer display (row 3)
+        self.capital_answer = Label(self.capital_frame, text="", font="Arial 18 bold",
+                                        wrap=275, justify=LEFT)
+        self.capital_answer.grid(row=1, pady=5)
+
+        # Next button goes here (row 5)
+        self.next_button = Button(self.game_frame, text="Start Game", bg="#adc178", font="Arial 15 bold",
                                   width=20, padx=10, pady=10, command=self.get_ccp)
-
-        # Bind button to <enter> (users can push to reveal the boxes)
-        self.check_button.focus()
-        self.check_button.bind('<Return>', lambda e: self.get_ccp())
         # grid setup of button
-        self.check_button.grid(row=4)
+        self.next_button.grid(row=5)
 
-        # Balance label (row 4)
+        # Balance label (row 6)
         start_text = "Round: {} ".format(rounds + 1)
 
         self.balance_label = Label(self.game_frame, font="Arial 12 bold", fg="#80b918",
                                    text=start_text, wrap=300, justify=LEFT)
-        self.balance_label.grid(row=5, pady=10)
+        self.balance_label.grid(row=6, pady=10)
 
-        # Help and Game stats button (row 5)
+        # Help and Game stats button (row 7)
         self.help_export_frame = Frame(self.game_frame, bg="#DDF0FF")
-        self.help_export_frame.grid(row=6, pady=10)
+        self.help_export_frame.grid(row=7, pady=10)
 
         self.help_button = Button(self.help_export_frame, text="Help / Rules", font="Arial 15 bold",
-                                  bg="#f6bd60", fg="white")
+                                  bg="#f6bd60", fg="white", command=self.help)
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
@@ -122,12 +131,20 @@ class Game:
         # Quit Button
         self.quit_button = Button(self.game_frame, text="Quit", fg="white", bg="#f07167", font="Arial 15 bold",
                                   width=20, command=self.to_quit, padx=10, pady=10)
-        self.quit_button.grid(row=7, pady=10)
+        self.quit_button.grid(row=8, pady=10)
+
+    # Help section
+    def help(self):
+        get_help = Help(self)
+        get_help.help_text.configure(text="There will be a country and its flag shown and all you need to do it figure out "
+                                          "that country's capital! If you don't know take a guess.")
 
     # retrieve information from csv file function
     def get_ccp(self):
         # When user plays game, change labels
-        self.check_button.config(text="Check Answer")
+        self.next_button.config(text="Next")
+        self.next_button.config(state=DISABLED)
+        self.check_button.config(state=ACTIVE)
         self.country_q_label.config(text="What is the capital of: ")
 
         # Open csv file and get provided information
@@ -148,22 +165,62 @@ class Game:
 
             # -- Display for game --
 
-            # country label
+            # Country label
             self.country_label.config(text=country)
 
-            # display image
+            # Display image
             photo = PhotoImage(file=image_file)
             self.country_p_label.config(image=photo)
             self.country_p_label.photo = photo
 
-    # MIGHT NOT NEED THIS FUNCTION -- TBD
-    # def check_answer(self):
-    #    # retrieve of the rounds from the initial function..
-    #    self.rounds.set(+1)
-    #    print("in progress")
+    # Check user input function
+    def check(self):
+        # retrieve of the rounds from the initial function..
+        self.rounds = + 1
+        print("in progress")
 
     def to_quit(self):
         root.destroy()
+
+
+# Help GUI
+class Help:
+    def __init__(self, partner):
+        background = "#fbc4ab"
+
+        # disable help button
+        partner.help_button.config(state=DISABLED)
+
+        # Sets up child window (ie: help box)
+        self.help_box = Toplevel()
+
+        # If users press the cross at top, closes help and 'releases' help button
+        self.help_box.protocol('WM_DELETE_WINDOW', partial(self.close_help, partner))
+
+        # Set up GUI Frame
+
+        self.help_frame = Frame(self.help_box, bg=background)
+        self.help_frame.grid()
+
+        # Set up Help Heading (row 0)
+        self.how_heading = Label(self.help_frame, text="Help / Instructions", font="arial 14 bold",
+                                 bg=background)
+        self.how_heading.grid(row=0)
+
+        # Help text (label, row 1)
+        self.help_text = Label(self.help_frame, text="", justify=LEFT, width=40, bg=background,
+                               wrap=250)
+        self.help_text.grid(column=0, row=1)
+
+        # Dismiss button (row 2)
+        self.dismiss_btn = Button(self.help_frame, text="Dismiss", width=10, bg="#f4978e",
+                                  font="arial 10 bold", command=partial(self.close_help, partner))
+        self.dismiss_btn.grid(row=2, pady=10)
+
+    def close_help(self, partner):
+        # Put help button back to normal...
+        partner.help_button.config(state=NORMAL)
+        self.help_box.destroy()
 
 
 # main routine
