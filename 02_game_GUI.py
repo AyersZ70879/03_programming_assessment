@@ -134,6 +134,11 @@ class Game:
         with open("00_country_capital.csv") as f:
             reader = csv.reader(f)
             reader = list(reader)
+
+            # deletes first row in csv file
+            del reader[0]
+
+            # get randomised country, capital and image
             randomised_reader = random.choice(reader)
 
             # Split into variables
