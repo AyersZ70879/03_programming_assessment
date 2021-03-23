@@ -23,7 +23,7 @@
       <file leaf-file-name="01_start_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01_start_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="663">
               <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -35,30 +35,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="02_game_GUI.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="02_game_GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/02_game_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="674">
-              <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+            <state relative-caret-position="153">
+              <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
               <folding>
                 <element signature="e#140#657#0" expanded="false" />
-                <element signature="e#5248#5495#0" expanded="false" />
-                <element signature="e#6905#6919#0" expanded="false" />
-                <element signature="e#6949#8339#0" expanded="false" />
-                <element signature="e#8385#8485#0" expanded="false" />
+                <element signature="e#5246#5493#0" expanded="false" />
+                <element signature="e#8602#8616#0" expanded="false" />
+                <element signature="e#8646#10036#0" expanded="false" />
+                <element signature="e#10082#10182#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AA_complied_game_v1.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AA_complied_game_v1.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/AA_complied_game_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="657">
-              <caret line="605" column="0" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="74" column="17" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <element signature="e#133#5533#0" expanded="false" />
+                <element signature="e#5564#14117#0" expanded="false" />
                 <element signature="e#14151#19337#0" expanded="false" />
                 <element signature="e#19372#23593#0" expanded="false" />
                 <element signature="e#23620#25009#0" expanded="false" />
@@ -117,7 +117,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -128,6 +127,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -374,7 +374,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30416223" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.009605123" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -401,7 +401,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -425,10 +425,51 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#140#657#0" expanded="false" />
-            <element signature="e#5248#5495#0" expanded="false" />
-            <element signature="e#6905#6919#0" expanded="false" />
-            <element signature="e#6949#8339#0" expanded="false" />
-            <element signature="e#8385#8485#0" expanded="false" />
+            <element signature="e#5246#5493#0" expanded="false" />
+            <element signature="e#8602#8616#0" expanded="false" />
+            <element signature="e#8646#10036#0" expanded="false" />
+            <element signature="e#10082#10182#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/AA_complied_game_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3723">
+          <caret line="605" column="0" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#5564#14117#0" expanded="false" />
+            <element signature="e#14151#19337#0" expanded="false" />
+            <element signature="e#19372#23593#0" expanded="false" />
+            <element signature="e#23620#25009#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/01_start_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1615856706840" expanded="true" signature="144:1812" ph="..." />
+            <marker date="1615856706840" expanded="true" signature="2740:3120" ph="..." />
+            <marker date="1615856706840" expanded="true" signature="3500:3619" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/02_game_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#140#657#0" expanded="false" />
+            <element signature="e#5246#5493#0" expanded="false" />
+            <element signature="e#8602#8616#0" expanded="false" />
+            <element signature="e#8646#10036#0" expanded="false" />
+            <element signature="e#10082#10182#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -439,7 +480,7 @@
           <caret line="282" column="43" selection-start-line="282" selection-start-column="43" selection-end-line="282" selection-end-column="43" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#133#5533#0" expanded="false" />
+            <element signature="e#5564#14117#0" expanded="false" />
             <element signature="e#14151#19337#0" expanded="false" />
             <element signature="e#19372#23593#0" expanded="false" />
             <element signature="e#23620#25009#0" expanded="false" />
@@ -466,10 +507,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#140#657#0" expanded="false" />
-            <element signature="e#5248#5495#0" expanded="false" />
-            <element signature="e#6905#6919#0" expanded="false" />
-            <element signature="e#6949#8339#0" expanded="false" />
-            <element signature="e#8385#8485#0" expanded="false" />
+            <element signature="e#5246#5493#0" expanded="false" />
+            <element signature="e#8602#8616#0" expanded="false" />
+            <element signature="e#8646#10036#0" expanded="false" />
+            <element signature="e#10082#10182#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -480,7 +521,7 @@
           <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#133#5533#0" expanded="false" />
+            <element signature="e#5564#14117#0" expanded="false" />
             <element signature="e#14151#19337#0" expanded="false" />
             <element signature="e#19372#23593#0" expanded="false" />
             <element signature="e#23620#25009#0" expanded="false" />
@@ -507,10 +548,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#140#657#0" expanded="false" />
-            <element signature="e#5248#5495#0" expanded="false" />
-            <element signature="e#6905#6919#0" expanded="false" />
-            <element signature="e#6949#8339#0" expanded="false" />
-            <element signature="e#8385#8485#0" expanded="false" />
+            <element signature="e#5246#5493#0" expanded="false" />
+            <element signature="e#8602#8616#0" expanded="false" />
+            <element signature="e#8646#10036#0" expanded="false" />
+            <element signature="e#10082#10182#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -521,7 +562,7 @@
           <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#133#5533#0" expanded="false" />
+            <element signature="e#5564#14117#0" expanded="false" />
             <element signature="e#14151#19337#0" expanded="false" />
             <element signature="e#19372#23593#0" expanded="false" />
             <element signature="e#23620#25009#0" expanded="false" />
@@ -548,10 +589,10 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#140#657#0" expanded="false" />
-            <element signature="e#5248#5495#0" expanded="false" />
-            <element signature="e#6905#6919#0" expanded="false" />
-            <element signature="e#6949#8339#0" expanded="false" />
-            <element signature="e#8385#8485#0" expanded="false" />
+            <element signature="e#5246#5493#0" expanded="false" />
+            <element signature="e#8602#8616#0" expanded="false" />
+            <element signature="e#8646#10036#0" expanded="false" />
+            <element signature="e#10082#10182#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -562,7 +603,7 @@
           <caret line="186" column="47" selection-start-line="186" selection-start-column="47" selection-end-line="186" selection-end-column="47" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#133#5533#0" expanded="false" />
+            <element signature="e#5564#14117#0" expanded="false" />
             <element signature="e#14151#19337#0" expanded="false" />
             <element signature="e#19372#23593#0" expanded="false" />
             <element signature="e#23620#25009#0" expanded="false" />
@@ -589,7 +630,7 @@
           <caret line="214" column="73" selection-start-line="214" selection-start-column="67" selection-end-line="214" selection-end-column="73" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#133#5533#0" expanded="false" />
+            <element signature="e#5564#14117#0" expanded="false" />
             <element signature="e#14151#19337#0" expanded="false" />
             <element signature="e#19372#23593#0" expanded="false" />
             <element signature="e#23620#25009#0" expanded="false" />
@@ -648,7 +689,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_start_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="663">
           <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -663,34 +704,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/AA_complied_game_v1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="605" column="0" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <element signature="e#133#5533#0" expanded="false" />
-            <element signature="e#14151#19337#0" expanded="false" />
-            <element signature="e#19372#23593#0" expanded="false" />
-            <element signature="e#23620#25009#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/02_game_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="186" column="0" selection-start-line="186" selection-start-column="0" selection-end-line="186" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
           <folding>
             <element signature="e#140#657#0" expanded="false" />
-            <element signature="e#5248#5495#0" expanded="false" />
-            <element signature="e#6905#6919#0" expanded="false" />
-            <element signature="e#6949#8339#0" expanded="false" />
-            <element signature="e#8385#8485#0" expanded="false" />
+            <element signature="e#5246#5493#0" expanded="false" />
+            <element signature="e#8602#8616#0" expanded="false" />
+            <element signature="e#8646#10036#0" expanded="false" />
+            <element signature="e#10082#10182#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/AA_complied_game_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="74" column="17" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#5564#14117#0" expanded="false" />
+            <element signature="e#14151#19337#0" expanded="false" />
+            <element signature="e#19372#23593#0" expanded="false" />
+            <element signature="e#23620#25009#0" expanded="false" />
           </folding>
         </state>
       </provider>

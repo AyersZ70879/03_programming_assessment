@@ -99,9 +99,9 @@ class Game:
 
 
         # Capital answer display (row 3)
-        self.capital_answer = Label(self.capital_frame, text="", font="Arial 18 bold",
+        self.capital_answer = Label(self.game_frame, text="", font="Arial 10 bold",
                                         wrap=275, justify=LEFT)
-        self.capital_answer.grid(row=1, pady=5)
+        self.capital_answer.grid(row=4, pady=30)
 
         # Next button goes here (row 5)
         self.next_button = Button(self.game_frame, text="Start Game", bg="#adc178", font="Arial 15 bold",
@@ -145,6 +145,9 @@ class Game:
         self.next_button.config(text="Next")
         self.next_button.config(state=DISABLED)
         self.check_button.config(state=ACTIVE)
+        # Change background to white
+        self.capital_entry.config(bg="white")
+        self.capital_answer.config(text="")
         self.country_q_label.config(text="What is the capital of: ")
 
         # Open csv file and get provided information
@@ -173,10 +176,56 @@ class Game:
             self.country_p_label.config(image=photo)
             self.country_p_label.photo = photo
 
+            return capital_ans
+
     # Check user input function
     def check(self):
+        get_capital_answer = "capital"
+        capital_guess = self.capital_entry.get()
         # retrieve of the rounds from the initial function..
         self.rounds = + 1
+
+        error_back = "#ffafaf"
+        has_errors = "no"
+
+        # error types below
+
+        capital_guess = str(capital_guess)
+        # if left blank
+        if self.capital_guess == "":
+            has_errors = "yes"
+            error_feedback = "Please do not leave this field blank"
+
+        # if spaces is answer
+        elif self.capital_guess == " ":
+            has_errors = "yes"
+            error_feedback = "Please enter a valid string"
+
+        # if guess is incorrect
+        elif self.capital_entry != get_capital_answer:
+            # disable check button
+            self.check_button.config(state=DISABLED)
+            # change entry background
+            self.capital_entry.config(bg=error_back)
+            # user answer feedback
+            self.capital_answer.config(text="Incorrect! The capital is {}".format(get_capital_answer))
+
+        # if guess is correct
+        else:
+            # enable next button
+            self.next_button.config(state=NORMAL)
+            # change bg to green in entry box
+            self.capital_entry.config(bg="#CAFFBF")
+            # disable check button
+            self.check_button.config(state=DISABLED)
+            # user answer feedback
+            self.capital_answer.config(text="Correct!")
+
+        # if user enters an invalid string
+        if has_errors == "yes":
+            self.capital_entry.config(bg=error_back)
+            self.capital_answer.config(text=error_feedback)
+
 
         # For testing purposes  - to be removed later
         print("in progress")
