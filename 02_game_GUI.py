@@ -28,13 +28,9 @@ class Start:
 class Game:
     def __init__(self, partner, starting_rounds):
 
-
         # initialise variables
         self.rounds = IntVar()
         self.rounds = int(0)
-
-        # Set starting balance to amount entered by the user at the start if the game
-        #self.rounds.set(starting_rounds)
 
         # List for holding stats
         self.round_stats_list = []
@@ -166,8 +162,7 @@ class Game:
         # change question label
         self.country_q_label.config(text="What is the capital of: ")
         # add rounds when next button is clicked
-        self.rounds = int(+ 1)
-
+        self.rounds1_label.config(text=self.rounds + 1)
         # for testing
         print(self.rounds)
 
