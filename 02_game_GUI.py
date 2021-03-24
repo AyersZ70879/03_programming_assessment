@@ -76,7 +76,7 @@ class Game:
 
         self.country_label = Label(self.country_frame, text="", font="Arial 18 bold",
                                         wrap=275, justify=LEFT)
-        self.country_label.grid(row=1, column=1, pady=5)
+        self.country_label.grid(row=2, pady=5)
 
         # Country flag display - might have to be moved to ccp function and have the display below
         self.country_p_label = Label(self.country_frame, image="",
@@ -87,8 +87,8 @@ class Game:
         self.capital_frame = Frame(self.game_frame)
         self.capital_frame.grid(row=3, pady=10, padx=10)
 
-        self.capital_entry = Entry(self.capital_frame, font="Arial 16 bold")
-        self.capital_entry.grid(row=0, column=0)
+        self.capital_entry = Entry(self.capital_frame, font="Arial 15 bold")
+        self.capital_entry.grid(row=0, column=0, ipady=10)
 
         # Check button goes here (row 3)
         self.check_button = Button(self.capital_frame, text="Check", bg="#8ecae6", font="Arial 15 bold",
@@ -100,7 +100,7 @@ class Game:
         # Capital answer display (row 3)
         self.capital_answer = Label(self.game_frame, text="", font="Arial 10 bold",
                                         wrap=275, justify=LEFT)
-        self.capital_answer.grid(row=4, pady=30)
+        self.capital_answer.grid(row=4, pady=10)
 
         # Next button goes here (row 5)
         self.next_button = Button(self.game_frame, text="Start Game", bg="#adc178", font="Arial 15 bold",
@@ -171,6 +171,7 @@ class Game:
 
             # Split into variables
             country = randomised_reader[0]
+            global capital_ans
             capital_ans = randomised_reader[1]
             image_file = randomised_reader[2]
 
@@ -184,15 +185,13 @@ class Game:
             self.country_p_label.config(image=photo)
             self.country_p_label.photo = photo
 
-            return capital_ans
-
     # Check user input function
     def check(self):
-        # for testing purposes
-        get_capital_answer = "capital"
+        # Get capital from above function
+        get_capital_answer_lo = capital_ans.lower()
 
         # get user input
-        capital_guess = self.capital_entry.get()    # ***for error testing this code works***
+        capital_guess = self.capital_entry.get().lower()   # ***for error testing this code works***
         print(capital_guess)
 
         # error setup
@@ -208,13 +207,15 @@ class Game:
             error_feedback = "Please do not leave this field blank"
 
         # if guess is incorrect
-        elif capital_guess != get_capital_answer:
+        elif capital_guess != get_capital_answer_lo:
             # disable check button
             self.check_button.config(state=DISABLED)
             # change entry background
             self.capital_entry.config(bg=error_back)
+            # enable next button
+            self.next_button.config(state=NORMAL)
             # user answer feedback
-            self.capital_answer.config(text="Incorrect! The capital is {}".format(get_capital_answer))
+            self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
 
         # if guess is correct
         else:
