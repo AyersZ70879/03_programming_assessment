@@ -29,7 +29,7 @@ class Start:
 
 class Game:
     def __init__(self, partner, starting_rounds):
-        print(starting_rounds)
+
 
         # initialise variables
         self.rounds = IntVar()
@@ -58,7 +58,9 @@ class Game:
 
         # Instructions Label
         self.instructions_label = Label(self.game_frame, wrap=300, justify=LEFT, text="Guess the country's capital and "
-                                                                                      "see how many you can get correct!")
+                                                                                      "see how many you can get "
+                                                                                      "correct!"
+                                                                                      " Punctuation does matter.")
         self.instructions_label.grid(row=1)
 
         # Country go here (row 2)
@@ -185,6 +187,9 @@ class Game:
             self.country_p_label.config(image=photo)
             self.country_p_label.photo = photo
 
+        # *** For testing Purposes ***
+        print(capital_ans)
+
     # Check user input function
     def check(self):
         # Get capital from above function
@@ -192,7 +197,7 @@ class Game:
 
         # get user input
         capital_guess = self.capital_entry.get().lower()   # ***for error testing this code works***
-        print(capital_guess)
+
 
         # error setup
         error_back = "#ffafaf"
