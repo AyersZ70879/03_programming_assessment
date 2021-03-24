@@ -204,7 +204,8 @@ class Game:
         # if left blank
         if capital_guess == "":
             has_errors = "yes"
-            error_feedback = "Please do not leave this field blank"
+            error_feedback = "Please do not leave this field blank.\nHINT: The capital starts with the " \
+                             "letter '{}'".format(capital_ans[0])
 
         # if guess is incorrect
         elif capital_guess != get_capital_answer_lo:
