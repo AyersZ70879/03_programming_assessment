@@ -180,15 +180,18 @@ class Game:
 
     # Check user input function
     def check(self):
+        # for testing purposes
         get_capital_answer = "capital"
-        capital_guess = self.capital_entry.get()
-        # retrieve of the rounds from the initial function..
-        self.rounds = + 1
 
+        # get user input
+        capital_guess = self.capital_entry.get()    # ***for error testing this code works***
+        print(capital_guess)
+
+        # error setup
         error_back = "#ffafaf"
         has_errors = "no"
 
-        # error types below
+        # -- Error types below --
 
         capital_guess = str(capital_guess)
         # if left blank
@@ -225,7 +228,6 @@ class Game:
         if has_errors == "yes":
             self.capital_entry.config(bg=error_back)
             self.capital_answer.config(text=error_feedback)
-
 
         # For testing purposes  - to be removed later
         print("in progress")
