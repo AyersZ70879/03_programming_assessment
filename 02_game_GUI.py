@@ -141,13 +141,22 @@ class Game:
 
     # retrieve information from csv file function
     def get_ccp(self):
-        # When user plays game, change labels
+
+        # -- Configure display (below) --
+
+        # When user plays game, change label
         self.next_button.config(text="Next")
+        # Disable next button
         self.next_button.config(state=DISABLED)
+        # enable check button
         self.check_button.config(state=ACTIVE)
         # Change background to white
         self.capital_entry.config(bg="white")
+        # clear capital answer
         self.capital_answer.config(text="")
+        # clear entry box field
+        self.capital_entry.delete(0, 'end')
+        # change question label
         self.country_q_label.config(text="What is the capital of: ")
 
         # Open csv file and get provided information
@@ -199,13 +208,8 @@ class Game:
             has_errors = "yes"
             error_feedback = "Please do not leave this field blank"
 
-        # if spaces is answer
-        elif capital_guess == " ":
-            has_errors = "yes"
-            error_feedback = "Please enter a valid string"
-
         # if guess is incorrect
-        elif self.capital_entry != get_capital_answer:
+        elif capital_guess != get_capital_answer:
             # disable check button
             self.check_button.config(state=DISABLED)
             # change entry background
