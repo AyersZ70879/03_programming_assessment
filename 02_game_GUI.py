@@ -97,7 +97,6 @@ class Game:
         # Disable check button before user starts game
         self.check_button.config(state=DISABLED)
 
-
         # Capital answer display (row 3)
         self.capital_answer = Label(self.game_frame, text="", font="Arial 10 bold",
                                         wrap=275, justify=LEFT)
@@ -142,7 +141,7 @@ class Game:
     # retrieve information from csv file function
     def get_ccp(self):
 
-        # -- Configure display (below) --
+        # --- Configure display (below) ---
 
         # When user plays game, change label
         self.next_button.config(text="Next")
