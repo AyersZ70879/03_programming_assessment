@@ -195,12 +195,12 @@ class Game:
 
         capital_guess = str(capital_guess)
         # if left blank
-        if self.capital_guess == "":
+        if capital_guess == "":
             has_errors = "yes"
             error_feedback = "Please do not leave this field blank"
 
         # if spaces is answer
-        elif self.capital_guess == " ":
+        elif capital_guess == " ":
             has_errors = "yes"
             error_feedback = "Please enter a valid string"
 
@@ -229,8 +229,6 @@ class Game:
             self.capital_entry.config(bg=error_back)
             self.capital_answer.config(text=error_feedback)
 
-        # For testing purposes  - to be removed later
-        print("in progress")
 
     def to_quit(self):
         root.destroy()
