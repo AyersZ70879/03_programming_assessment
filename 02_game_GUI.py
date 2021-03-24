@@ -3,8 +3,6 @@ from functools import partial   # To prevent unwanted windows
 import random
 import csv
 
-rounds = 0
-
 
 class Start:
     def __init__(self, parent):
@@ -33,9 +31,10 @@ class Game:
 
         # initialise variables
         self.rounds = IntVar()
+        self.rounds = int(0)
 
         # Set starting balance to amount entered by the user at the start if the game
-        self.rounds.set(starting_rounds)
+        #self.rounds.set(starting_rounds)
 
         # List for holding stats
         self.round_stats_list = []
@@ -120,7 +119,7 @@ class Game:
                                    text=start_text, wrap=300, justify=LEFT)
         self.rounds_label.grid(row=0, column=0, pady=10)
 
-        self.rounds1_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918", text=rounds,
+        self.rounds1_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918", text=self.rounds,
                                    wrap=300, justify=LEFT)
         self.rounds_label.grid(row=0, column=1, pady=10)
 
@@ -166,11 +165,11 @@ class Game:
         self.capital_entry.delete(0, 'end')
         # change question label
         self.country_q_label.config(text="What is the capital of: ")
-        # round addition
-        self.rounds.set(1)
+        # add rounds when next button is clicked
+        self.rounds = int(+ 1)
 
         # for testing
-        print(rounds)
+        print(self.rounds)
 
         # Open csv file and get provided information
         with open("00_country_capital.csv") as f:

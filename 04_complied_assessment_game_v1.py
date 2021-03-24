@@ -242,7 +242,7 @@ class Game:
         self.capital_entry.delete(0, 'end')
         # change question label
         self.country_q_label.config(text="What is the capital of: ")
-        
+
 
         # for testing
         print(self.rounds)
