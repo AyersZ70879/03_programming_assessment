@@ -35,6 +35,7 @@ class Game:
 
         # List for holding stats
         self.game_stats_list = []
+        self.rounds_stats = []
 
 
         # GUI Setup
@@ -129,7 +130,7 @@ class Game:
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#468faf", fg="white", command=self.to_stats(get_rounds, self.game_stats_list))
+                                   bg="#468faf", fg="white", command=self.to_stats(self.rounds_stats, self.game_stats_list))
         self.stats_button.grid(row=0, column=1, padx=2)
 
         # Quit Button
@@ -171,6 +172,8 @@ class Game:
         get_rounds += 1
         self.rounds.set(get_rounds)
         self.rounds1_label.config(text=get_rounds)
+        # get rounds for stats
+        self.rounds_stats.append(get_rounds)
         # for testing
         print(get_rounds)
 
@@ -317,12 +320,12 @@ class Help:
 
 # Game Stats
 class GameStats:
-    def __init__(self, partner, game_stats):
+    def __init__(self, partner, game_history, game_stats):
 
         all_game_stats = [
-            "Rounds Played: {}".format(get_rounds),
-            "Number of Correct Answers: ${}".format(game_stats[1]),
-            "Number of Incorrect Answers: ${}".format(game_stats[2])
+            "Rounds Played: {}".format(game_history),
+            #"Number of Correct Answers: ${}".format(game_stats[0]),
+            #"Number of Incorrect Answers: ${}".format(game_stats[1])
         ]
 
         # disable stats button
