@@ -104,14 +104,12 @@ class Start:
 
 
 class Game:
-    def __init__(self, partner, starting_rounds_set):
-
+    def __init__(self, partner, starting_rounds):
+        global how_many_r
+        how_many_r = starting_rounds
 
         # initialise variables
         self.rounds = IntVar()
-
-        # Set starting balance to amount entered by the user at the start if the game
-        self.rounds.set(starting_rounds_set)
 
         # List for holding stats
         self.round_stats_list = []
@@ -133,10 +131,11 @@ class Game:
         self.heading_label.grid(row=0)
 
         # Instructions Label
-        self.instructions_label = Label(self.game_frame, wrap=300, justify=LEFT, text="Guess the country's capital and "
-                                                                                      "see how many you can get "
-                                                                                      "correct!"
-                                                                                      " Punctuation does matter.")
+        self.instructions_label = Label(self.game_frame, wrap=300, justify=LEFT,
+                                        text="Guess the country's capital and "
+                                             "see how many you can get "
+                                             "correct!"
+                                             " Punctuation does matter.")
         self.instructions_label.grid(row=1)
 
         # Country go here (row 2)
@@ -147,18 +146,18 @@ class Game:
 
         # Country question label
         self.country_q_label = Label(self.country_frame, text="Press Start to play", font="Arial 10 bold",
-                                        wrap=275, justify=LEFT)
+                                     wrap=275, justify=LEFT)
         self.country_q_label.grid(row=0, column=0, pady=5)
 
         # Country display label
 
         self.country_label = Label(self.country_frame, text="", font="Arial 18 bold",
-                                        wrap=275, justify=LEFT)
+                                   wrap=275, justify=LEFT)
         self.country_label.grid(row=2, pady=5)
 
         # Country flag display - might have to be moved to ccp function and have the display below
         self.country_p_label = Label(self.country_frame, image="",
-                                padx=10, pady=10)
+                                     padx=10, pady=10)
         self.country_p_label.grid(row=1, column=0)
 
         # Capital goes here (row 3)
@@ -177,7 +176,7 @@ class Game:
 
         # Capital answer display (row 3)
         self.capital_answer = Label(self.game_frame, text="", font="Arial 10 bold",
-                                        wrap=275, justify=LEFT)
+                                    wrap=275, justify=LEFT)
         self.capital_answer.grid(row=4, pady=10)
 
         # Next button goes here (row 5)
@@ -193,12 +192,11 @@ class Game:
         start_text = "Round: "
 
         self.rounds_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918",
-                                   text=start_text, wrap=300, justify=LEFT)
+                                  text=start_text)
         self.rounds_label.grid(row=0, column=0, pady=10)
 
-        self.rounds1_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918", text=self.rounds,
-                                   wrap=300, justify=LEFT)
-        self.rounds_label.grid(row=0, column=1, pady=10)
+        self.rounds1_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918", text="0")
+        self.rounds1_label.grid(row=0, column=1, pady=10)
 
         # Help and Game stats button (row 7)
         self.help_export_frame = Frame(self.game_frame, bg="#DDF0FF")
@@ -220,8 +218,9 @@ class Game:
     # Help section
     def help(self):
         get_help = Help(self)
-        get_help.help_text.configure(text="There will be a country and its flag shown and all you need to do it figure out "
-                                          "that country's capital! If you don't know take a guess.")
+        get_help.help_text.configure(
+            text="There will be a country and its flag shown and all you need to do it figure out "
+                 "that country's capital! If you don't know take a guess.")
 
     # retrieve information from csv file function
     def get_ccp(self):
@@ -242,10 +241,14 @@ class Game:
         self.capital_entry.delete(0, 'end')
         # change question label
         self.country_q_label.config(text="What is the capital of: ")
-
-
+        # add rounds when next button is clicked
+        global get_rounds
+        get_rounds = self.rounds.get()
+        get_rounds += 1
+        self.rounds.set(get_rounds)
+        self.rounds1_label.config(text=get_rounds)
         # for testing
-        print(self.rounds)
+        print(get_rounds)
 
         # Open csv file and get provided information
         with open("00_country_capital.csv") as f:
@@ -283,8 +286,7 @@ class Game:
         get_capital_answer_lo = capital_ans.lower()
 
         # get user input
-        capital_guess = self.capital_entry.get().lower()   # ***for error testing this code works***
-
+        capital_guess = self.capital_entry.get().lower()  # ***for error testing this code works***
 
         # error setup
         error_back = "#ffafaf"
@@ -301,34 +303,50 @@ class Game:
 
         # if guess is incorrect
         elif capital_guess != get_capital_answer_lo:
-            # disable check button
-            self.check_button.config(state=DISABLED)
-            # change entry background
-            self.capital_entry.config(bg=error_back)
-            # enable next button
-            self.next_button.config(state=NORMAL)
-            # user answer feedback
-            self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
-
+            if get_rounds != how_many_r:
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # change entry background
+                self.capital_entry.config(bg=error_back)
+                # enable next button
+                self.next_button.config(state=NORMAL)
+                # user answer feedback
+                self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
+            else:
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # change entry background
+                self.capital_entry.config(bg=error_back)
+                # user answer feedback
+                self.capital_answer.config(text="Incorrect! The capital is {}.\n\n"
+                                                "Game Over! Click Game Stats to view your game "
+                                                "statistics".format(capital_ans))
 
         # if guess is correct
         else:
-            # enable next button
-            self.next_button.config(state=NORMAL)
-            # change bg to green in entry box
-            self.capital_entry.config(bg="#CAFFBF")
-            # disable check button
-            self.check_button.config(state=DISABLED)
-            # user answer feedback
-            self.capital_answer.config(text="Correct!")
-            # add round
-
+            if get_rounds != how_many_r:
+                # enable next button
+                self.next_button.config(state=NORMAL)
+                # change bg to green in entry box
+                self.capital_entry.config(bg="#CAFFBF")
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # user answer feedback
+                self.capital_answer.config(text="Correct!")
+            else:
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # change bg to green in entry box
+                self.capital_entry.config(bg="#CAFFBF")
+                # user answer feedback
+                self.capital_answer.config(text="Correct!\n\n"
+                                                "Game Over! Click Game Stats to view your game "
+                                                "statistics")
 
         # if user enters an invalid string
         if has_errors == "yes":
             self.capital_entry.config(bg=error_back)
             self.capital_answer.config(text=error_feedback)
-
 
     def to_quit(self):
         root.destroy()
