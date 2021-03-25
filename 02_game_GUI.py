@@ -27,10 +27,11 @@ class Start:
 
 class Game:
     def __init__(self, partner, starting_rounds):
+        global how_many_r
+        how_many_r = starting_rounds
 
         # initialise variables
         self.rounds = IntVar()
-        self.rounds = int(0)
 
         # List for holding stats
         self.round_stats_list = []
@@ -112,12 +113,11 @@ class Game:
         start_text = "Round: "
 
         self.rounds_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918",
-                                   text=start_text, wrap=300, justify=LEFT)
+                                   text=start_text)
         self.rounds_label.grid(row=0, column=0, pady=10)
 
-        self.rounds1_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918", text=self.rounds,
-                                   wrap=300, justify=LEFT)
-        self.rounds_label.grid(row=0, column=1, pady=10)
+        self.rounds1_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918", text="0")
+        self.rounds1_label.grid(row=0, column=1, pady=10)
 
         # Help and Game stats button (row 7)
         self.help_export_frame = Frame(self.game_frame, bg="#DDF0FF")
@@ -162,9 +162,13 @@ class Game:
         # change question label
         self.country_q_label.config(text="What is the capital of: ")
         # add rounds when next button is clicked
-        self.rounds1_label.config(text=self.rounds + 1)
+        global get_rounds
+        get_rounds = self.rounds.get()
+        get_rounds += 1
+        self.rounds.set(get_rounds)
+        self.rounds1_label.config(text=get_rounds)
         # for testing
-        print(self.rounds)
+        print(get_rounds)
 
         # Open csv file and get provided information
         with open("00_country_capital.csv") as f:
@@ -220,27 +224,45 @@ class Game:
 
         # if guess is incorrect
         elif capital_guess != get_capital_answer_lo:
-            # disable check button
-            self.check_button.config(state=DISABLED)
-            # change entry background
-            self.capital_entry.config(bg=error_back)
-            # enable next button
-            self.next_button.config(state=NORMAL)
-            # user answer feedback
-            self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
-
+            if get_rounds != how_many_r:
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # change entry background
+                self.capital_entry.config(bg=error_back)
+                # enable next button
+                self.next_button.config(state=NORMAL)
+                # user answer feedback
+                self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
+            else:
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # change entry background
+                self.capital_entry.config(bg=error_back)
+                # user answer feedback
+                self.capital_answer.config(text="Incorrect! The capital is {}.\n\n"
+                                                "Game Over! Click Game Stats to view your game "
+                                                "statistics".format(capital_ans))
 
         # if guess is correct
         else:
-            # enable next button
-            self.next_button.config(state=NORMAL)
-            # change bg to green in entry box
-            self.capital_entry.config(bg="#CAFFBF")
-            # disable check button
-            self.check_button.config(state=DISABLED)
-            # user answer feedback
-            self.capital_answer.config(text="Correct!")
-            # add round
+            if get_rounds != how_many_r:
+                # enable next button
+                self.next_button.config(state=NORMAL)
+                # change bg to green in entry box
+                self.capital_entry.config(bg="#CAFFBF")
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # user answer feedback
+                self.capital_answer.config(text="Correct!")
+            else:
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # change bg to green in entry box
+                self.capital_entry.config(bg="#CAFFBF")
+                # user answer feedback
+                self.capital_answer.config(text="Correct!\n\n"
+                                                "Game Over! Click Game Stats to view your game "
+                                                "statistics")
 
 
         # if user enters an invalid string
