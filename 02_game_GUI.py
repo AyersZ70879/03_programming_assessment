@@ -146,6 +146,7 @@ class Game:
                                           "your stats for the "
                                           "games you've played, press Game Stats.")
 
+
     # retrieve information from csv file function
     def get_ccp(self):
 
@@ -277,6 +278,7 @@ class Game:
 
     def to_quit(self):
         root.destroy()
+
 
 
 # Help GUI
