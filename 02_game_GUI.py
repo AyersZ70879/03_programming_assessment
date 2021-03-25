@@ -139,8 +139,12 @@ class Game:
     # Help section
     def help(self):
         get_help = Help(self)
-        get_help.help_text.configure(text="There will be a country and its flag shown and all you need to do it figure out "
-                                          "that country's capital! If you don't know take a guess.")
+        get_help.help_text.configure(text="A country and its flag are shown and all you need to do it figure out "
+                                          "that country's capital! Click start Game and press check "
+                                          "when you have entered "
+                                          "a potential capital for that country. If you want to view "
+                                          "your stats for the "
+                                          "games you've played, press Game Stats.")
 
     # retrieve information from csv file function
     def get_ccp(self):

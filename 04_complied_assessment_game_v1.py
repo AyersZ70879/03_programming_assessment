@@ -105,6 +105,7 @@ class Start:
 
 class Game:
     def __init__(self, partner, starting_rounds):
+
         global how_many_r
         how_many_r = starting_rounds
 
