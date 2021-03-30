@@ -140,7 +140,7 @@ class Game:
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#468faf", fg="white", command=self.to_stats(self.rounds_stats, self.won, self.lost))
+                                   bg="#468faf", fg="white", command=self.to_stats(self.rounds_stats))
         self.stats_button.grid(row=0, column=1, padx=2)
 
         # Quit Button
@@ -154,8 +154,8 @@ class Game:
         get_help.help_text.configure(text="There will be a country and its flag shown and all you need to do it figure out "
                                           "that country's capital! If you don't know take a guess.")
 
-    def to_stats(self, game_history, get_won, get_lost):
-        GameStats(self, game_history, get_won, get_lost)
+    def to_stats(self, game_history):
+        GameStats(self, game_history)
 
     # retrieve information from csv file function
     def get_ccp(self):
@@ -184,8 +184,7 @@ class Game:
         self.rounds1_label.config(text=get_rounds)
         # get rounds for stats
         self.rounds_stats.append(get_rounds)
-        # for testing
-        print(get_rounds)
+
 
         # Open csv file and get provided information
         with open("00_country_capital.csv") as f:
@@ -336,16 +335,16 @@ class Help:
 
 # Game Stats
 class GameStats:
-    def __init__(self, partner, game_history, get_won, get_lost):
+    def __init__(self, partner, game_history):
 
-        all_game_stats = [
-            "Rounds Played: {}".format(game_history),
-            "Number of Correct Answers: ${}".format(get_won),
-            "Number of Incorrect Answers: ${}".format(get_lost)
-        ]
+        #all_game_stats = [
+        #    "Rounds Played: {}".format(game_history),
+        #    "Number of Correct Answers: ${}".format(get_won),
+        #    "Number of Incorrect Answers: ${}".format(get_lost)
+        #]
 
-        # disable stats button
-        partner.stats_button.config(state=DISABLED)
+        ## disable stats button
+        #partner.stats_button.config(state=DISABLED)
 
         heading = "Arial 12 bold"
         content = "Arial 12"
@@ -385,10 +384,10 @@ class GameStats:
                                          font=heading, anchor="e", bg="#DDF0FF")
         self.rounds_played_label.grid(row=0, column=0, padx=0)
 
-        self.start_rounds_played_label = Label(self.details_frame, font=content,
-                                               text="{}".format(get_rounds),
-                                               anchor="w", bg="#DDF0FF")
-        self.start_rounds_played_label.grid(row=0, column=1, padx=0)
+        #self.start_rounds_played_label = Label(self.details_frame, font=content,
+        #                                      text="{}".format(get_rounds),
+        #                                      anchor="w", bg="#DDF0FF")
+        #self.start_rounds_played_label.grid(row=0, column=1, padx=0)
 
         # Export Button
         self.export_button = Button(self.details_frame, text="Export", font="Arial 10 bold",
