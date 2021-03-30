@@ -27,26 +27,14 @@ class Start:
 
 class Game:
     def __init__(self, partner, starting_rounds):
-        # make how many rounds variable global
         global how_many_r
         how_many_r = starting_rounds
 
-        # make lost and won variables global
-        global lost
-        lost = 0
-
-        global won
-        won = 0
-
         # initialise variables
         self.rounds = IntVar()
-        self.won = IntVar(0)
-        self.lost = IntVar(0)
 
         # List for holding stats
-        self.game_stats_list = []
-        self.rounds_stats = []
-
+        self.round_stats_list = []
 
         # GUI Setup
         self.game_box = Toplevel()
@@ -140,7 +128,7 @@ class Game:
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#468faf", fg="white", command=self.to_stats(self.rounds_stats))
+                                   bg="#468faf", fg="white")
         self.stats_button.grid(row=0, column=1, padx=2)
 
         # Quit Button
@@ -151,11 +139,13 @@ class Game:
     # Help section
     def help(self):
         get_help = Help(self)
-        get_help.help_text.configure(text="There will be a country and its flag shown and all you need to do it figure out "
-                                          "that country's capital! If you don't know take a guess.")
+        get_help.help_text.configure(text="A country and its flag are shown and all you need to do it figure out "
+                                          "that country's capital! Click start Game and press check "
+                                          "when you have entered "
+                                          "a potential capital for that country. If you want to view "
+                                          "your stats for the "
+                                          "games you've played, press Game Stats.")
 
-    def to_stats(self, game_history):
-        GameStats(self, game_history)
 
     # retrieve information from csv file function
     def get_ccp(self):
@@ -182,9 +172,8 @@ class Game:
         get_rounds += 1
         self.rounds.set(get_rounds)
         self.rounds1_label.config(text=get_rounds)
-        # get rounds for stats
-        self.rounds_stats.append(get_rounds)
-
+        # for testing
+        print(get_rounds)
 
         # Open csv file and get provided information
         with open("00_country_capital.csv") as f:
@@ -222,7 +211,8 @@ class Game:
         get_capital_answer_lo = capital_ans.lower()
 
         # get user input
-        capital_guess = self.capital_entry.get().lower()
+        capital_guess = self.capital_entry.get().lower()   # ***for error testing this code works***
+
 
         # error setup
         error_back = "#ffafaf"
@@ -239,22 +229,20 @@ class Game:
 
         # if guess is incorrect
         elif capital_guess != get_capital_answer_lo:
-            # disable check button
-            self.check_button.config(state=DISABLED)
-            # change entry background
-            self.capital_entry.config(bg=error_back)
-            # get lost stats
-            lost = self.lost.get()
-            lost += 1
-            self.lost.set(lost)
-
-            # if there are rounds left
             if get_rounds != how_many_r:
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # change entry background
+                self.capital_entry.config(bg=error_back)
                 # enable next button
                 self.next_button.config(state=NORMAL)
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
             else:
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # change entry background
+                self.capital_entry.config(bg=error_back)
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}.\n\n"
                                                 "Game Over! Click Game Stats to view your game "
@@ -262,35 +250,35 @@ class Game:
 
         # if guess is correct
         else:
-            # disable check button
-            self.check_button.config(state=DISABLED)
-            # change bg to green in entry box
-            self.capital_entry.config(bg="#CAFFBF")
-            # get won stats
-            won = self.won.get()
-            won += 1
-            self.won.set(won)
-
-            # if rounds are left
             if get_rounds != how_many_r:
                 # enable next button
                 self.next_button.config(state=NORMAL)
+                # change bg to green in entry box
+                self.capital_entry.config(bg="#CAFFBF")
+                # disable check button
+                self.check_button.config(state=DISABLED)
                 # user answer feedback
                 self.capital_answer.config(text="Correct!")
-
             else:
+                # disable check button
+                self.check_button.config(state=DISABLED)
+                # change bg to green in entry box
+                self.capital_entry.config(bg="#CAFFBF")
                 # user answer feedback
                 self.capital_answer.config(text="Correct!\n\n"
                                                 "Game Over! Click Game Stats to view your game "
                                                 "statistics")
+
 
         # if user enters an invalid string
         if has_errors == "yes":
             self.capital_entry.config(bg=error_back)
             self.capital_answer.config(text=error_feedback)
 
+
     def to_quit(self):
         root.destroy()
+
 
 
 # Help GUI
@@ -331,196 +319,6 @@ class Help:
         # Put help button back to normal...
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
-
-
-# Game Stats
-class GameStats:
-    def __init__(self, partner, game_history):
-
-        #all_game_stats = [
-        #    "Rounds Played: {}".format(game_history),
-        #    "Number of Correct Answers: ${}".format(get_won),
-        #    "Number of Incorrect Answers: ${}".format(get_lost)
-        #]
-
-        ## disable stats button
-        #partner.stats_button.config(state=DISABLED)
-
-        heading = "Arial 12 bold"
-        content = "Arial 12"
-
-        # Sets up child windows (ie: help box)
-        self.stats_box = Toplevel()
-
-        # If users press cross at top, closes help and 'releases' button
-
-        self.stats_box.protocol('WM_DELETE_WINDOW', partial(self.close_stats, partner))
-
-        # Set up GUI Frame
-        self.stats_frame = Frame(self.stats_box, bg="#DDF0FF")
-        self.stats_frame.grid()
-
-        # Set up a Help heading (row 0)
-        self.stats_heading_label = Label(self.stats_frame, text="Game Stats",
-                                         font="arial 19 bold", bg="#DDF0FF")
-        self.stats_heading_label.grid(row=0)
-
-        # To export <instructions> (row 1)
-        self.export_instructions = Label(self.stats_frame,
-                                         text="Here are your Game Stats. "
-                                              "Please use the Export Button to "
-                                              "access the results of each round "
-                                              "that you played.", wrap=250, font="arial 10 italic",
-                                         justify=LEFT, fg="green", padx=10, pady=10, bg="#DDF0FF")
-        self.export_instructions.grid(row=1)
-
-        # Stats Frame (row 2)
-        self.details_frame = Frame(self.stats_frame, bg="#DDF0FF")
-        self.details_frame.grid(row=2)
-
-        # Rounds played(row 2.0)
-
-        self.rounds_played_label = Label(self.details_frame, text="Rounds Played",
-                                         font=heading, anchor="e", bg="#DDF0FF")
-        self.rounds_played_label.grid(row=0, column=0, padx=0)
-
-        #self.start_rounds_played_label = Label(self.details_frame, font=content,
-        #                                      text="{}".format(get_rounds),
-        #                                      anchor="w", bg="#DDF0FF")
-        #self.start_rounds_played_label.grid(row=0, column=1, padx=0)
-
-        # Export Button
-        self.export_button = Button(self.details_frame, text="Export", font="Arial 10 bold",
-                                    bg="orange")
-        self.export_button.grid(row=5, column=0, padx=2)
-
-        # Dismiss button (row 3)
-        self.dismiss_btn = Button(self.details_frame, text="Dismiss", width=10, bg="orange",
-                                  font="arial 10 bold", command=partial(self.close_stats, partner))
-        self.dismiss_btn.grid(row=5, column=1, pady=10)
-
-    def export(self, game_history, all_game_stats):
-        Export(self, game_history, all_game_stats)
-
-    def close_stats(self, partner):
-        # Put stats button back to normal...
-        partner.stats_button.config(state=NORMAL)
-        self.stats_box.destroy()
-
-
-# Export section
-class Export:
-    def __init__(self, partner, game_history, all_game_stats):
-
-        # Disable export button
-        partner.export_button.config(state=DISABLED)
-
-        # Sets up child window (ie: export box)
-        self.export_box = Toplevel()
-
-        # If users press cross at top, closes export and 'releases' export button
-        self.export_box.protocol('WM_DELETE_WINDOW', partial(self.close_export, partner))
-
-        # Set up GUI frame
-        self.export_frame = Frame(self.export_box, width=300)
-        self.export_frame.grid()
-
-        # Set up export heading (row 0)
-        self.how_heading = Label(self.export_frame, text="Export / Instructions", font="arial 14 bold")
-        self.how_heading.grid(row=0)
-
-        # Export Instructions (label, row 1)
-        self.export_text = Label(self.export_frame, text="Enter a filename in the box below and press the "
-                                                         "Save button to save your calculation history to "
-                                                         "text file.", justify=LEFT, width=40, wrap=250)
-        self.export_text.grid(row=1)
-
-        # Warning text (label, row 2)
-        self.export_text = Label(self.export_frame, text="If the filename you enter below already exists, "
-                                                         "its contents will be replaced with your calculation "
-                                                         "history", justify=LEFT, bg="#ffafaf", fg="maroon",
-                                 font="Arial 10 italic", wrap=225, padx=10, pady=10)
-        self.export_text.grid(row=2, pady=10)
-
-        # Filename Entry Box (row 3)
-        self.filename_entry = Entry(self.export_frame, width=20, font="Arial 14 bold", justify=CENTER)
-        self.filename_entry.grid(row=3, pady=10)
-
-        # Error Message Labels (initially blank, row 4)
-        self.save_error_label = Label(self.export_frame, text="", fg="maroon")
-        self.save_error_label.grid(row=4)
-
-        # Save / Cancel Frame (row 5)
-        self.save_frame = Frame(self.export_box)
-        self.save_frame.grid(row=5, pady=10)
-
-        # Save and Cancel Buttons (row 0 of save_cancel_frame)
-        self.save_button = Button(self.save_frame, text="Save", font="Arial 15 bold", bg="#003366",
-                                  fg="white",
-                                  command=partial(lambda: self.save_history(partner, game_history, all_game_stats)))
-        self.save_button.grid(row=0, column=1)
-
-    def save_history(self, partner, game_history, game_stats):
-
-        # Regular expression to check filename is valid
-        valid_char = "[A-Za-z0-9_]"
-        has_error = "no"
-
-        filename = self.filename_entry.get()
-
-        for letter in filename:
-            if re.match(valid_char, letter):
-                continue
-
-            elif letter == " ":
-                problem = "(No spaces allowed)"
-
-            else:
-                problem = ("(No {}'s allowed)".format(letter))
-            has_error = "yes"
-            break
-
-        if filename == "":
-            problem = "File name can't be blank"
-            has_error = "yes"
-
-        if has_error == "yes":
-            self.filename_entry.config(bg="#ffafaf")
-            self.save_error_label.config(text="Invalid Name: {}".format(problem))
-
-        else:
-            # If there are no errors, generate text filename and then close dialogue
-            # add .txt suffix
-            filename = filename + ".txt"
-
-            # Create file to hold data
-            f = open(filename, "w+")
-
-            # Heading for stats
-            f.write("**Game Statistics**\n\n")
-
-            # Game stats
-            for round in game_stats:
-                f.write(round + "\n")
-
-            # Heading for Rounds
-            f.write("\nRound Details\n\n")
-
-
-            # Add new line at end of each item
-            for item in game_history:
-                f.write(item + "\n")
-
-            # close file
-            f.close()
-
-            # close dialogue
-            self.close_export(partner)
-
-    def close_export(self, partner):
-        # Put export button back to normal...
-        partner.export_button.config(state=NORMAL)
-        self.export_box.destroy()
 
 
 # main routine
