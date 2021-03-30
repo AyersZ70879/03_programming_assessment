@@ -27,11 +27,21 @@ class Start:
 
 class Game:
     def __init__(self, partner, starting_rounds):
+        # make how many rounds variable global
         global how_many_r
         how_many_r = starting_rounds
 
+        # make lost and won variables global
+        global lost
+        lost = 0
+
+        global won
+        won = 0
+
         # initialise variables
         self.rounds = IntVar()
+        self.won = IntVar(0)
+        self.lost = IntVar(0)
 
         # List for holding stats
         self.game_stats_list = []
@@ -130,7 +140,7 @@ class Game:
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#468faf", fg="white", command=self.to_stats(self.rounds_stats, self.game_stats_list))
+                                   bg="#468faf", fg="white", command=self.to_stats(self.rounds_stats, self.won, self.lost))
         self.stats_button.grid(row=0, column=1, padx=2)
 
         # Quit Button
@@ -144,8 +154,8 @@ class Game:
         get_help.help_text.configure(text="There will be a country and its flag shown and all you need to do it figure out "
                                           "that country's capital! If you don't know take a guess.")
 
-    def to_stats(self, game_history, game_stats):
-        GameStats(self, game_history, game_stats)
+    def to_stats(self, game_history, get_won, get_lost):
+        GameStats(self, game_history, get_won, get_lost)
 
     # retrieve information from csv file function
     def get_ccp(self):
@@ -213,8 +223,7 @@ class Game:
         get_capital_answer_lo = capital_ans.lower()
 
         # get user input
-        capital_guess = self.capital_entry.get().lower()   # ***for error testing this code works***
-
+        capital_guess = self.capital_entry.get().lower()
 
         # error setup
         error_back = "#ffafaf"
@@ -235,6 +244,10 @@ class Game:
             self.check_button.config(state=DISABLED)
             # change entry background
             self.capital_entry.config(bg=error_back)
+            # get lost stats
+            lost = self.lost.get()
+            lost += 1
+            self.lost.set(lost)
 
             # if there are rounds left
             if get_rounds != how_many_r:
@@ -254,6 +267,10 @@ class Game:
             self.check_button.config(state=DISABLED)
             # change bg to green in entry box
             self.capital_entry.config(bg="#CAFFBF")
+            # get won stats
+            won = self.won.get()
+            won += 1
+            self.won.set(won)
 
             # if rounds are left
             if get_rounds != how_many_r:
@@ -272,7 +289,6 @@ class Game:
         if has_errors == "yes":
             self.capital_entry.config(bg=error_back)
             self.capital_answer.config(text=error_feedback)
-
 
     def to_quit(self):
         root.destroy()
@@ -320,12 +336,12 @@ class Help:
 
 # Game Stats
 class GameStats:
-    def __init__(self, partner, game_history, game_stats):
+    def __init__(self, partner, game_history, get_won, get_lost):
 
         all_game_stats = [
             "Rounds Played: {}".format(game_history),
-            #"Number of Correct Answers: ${}".format(game_stats[0]),
-            #"Number of Incorrect Answers: ${}".format(game_stats[1])
+            "Number of Correct Answers: ${}".format(get_won),
+            "Number of Incorrect Answers: ${}".format(get_lost)
         ]
 
         # disable stats button
@@ -374,14 +390,6 @@ class GameStats:
                                                anchor="w", bg="#DDF0FF")
         self.start_rounds_played_label.grid(row=0, column=1, padx=0)
 
-        # Current Balance (row 2.2)
-        self.current_balance_label = Label(self.details_frame, text="Number of Answers Correct: ",
-                                           font=heading, anchor="e", bg="#DDF0FF")
-        self.current_balance_label.grid(row=1, column=0, padx=0)
-
-        self.current_balance_value_label = Label(self.details_frame, font=content,
-                                                 text="{}".format(game_stats[1]), bg="#DDF0FF")
-        self.current_balance_value_label.grid(row=1, column=1, padx=0)
 
         # Export Button
         self.export_button = Button(self.details_frame, text="Export", font="Arial 10 bold",
@@ -498,6 +506,7 @@ class Export:
 
             # Heading for Rounds
             f.write("\nRound Details\n\n")
+
 
             # Add new line at end of each item
             for item in game_history:
