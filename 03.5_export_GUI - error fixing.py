@@ -128,13 +128,17 @@ class Game:
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#468faf", fg="white")
+                                   bg="#468faf", fg="white", command=self.stats)
         self.stats_button.grid(row=0, column=1, padx=2)
 
         # Quit Button
         self.quit_button = Button(self.game_frame, text="Quit", fg="white", bg="#f07167", font="Arial 15 bold",
                                   width=20, command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=8, pady=10)
+
+    # Game Stats section
+    def stats(self):
+        get_stats = GameStats(self)
 
     # Help section
     def help(self):
@@ -269,16 +273,13 @@ class Game:
                                                 "Game Over! Click Game Stats to view your game "
                                                 "statistics")
 
-
         # if user enters an invalid string
         if has_errors == "yes":
             self.capital_entry.config(bg=error_back)
             self.capital_answer.config(text=error_feedback)
 
-
     def to_quit(self):
         root.destroy()
-
 
 
 # Help GUI
@@ -319,6 +320,53 @@ class Help:
         # Put help button back to normal...
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
+
+
+# Game Stats GUI
+class GameStats:
+    def __init__(self, partner):
+        background = "#c6def1"
+
+        # disable stats button
+        partner.stats_button.config(state=DISABLED)
+
+        # Sets up child window (ie: stats box)
+        self.stats_box = Toplevel()
+
+        # If users press the cross at top, closes help and 'releases' help button
+        self.stats_box.protocol('WM_DELETE_WINDOW', partial(self.close_stats, partner))
+
+        # Set up GUI Frame
+
+        self.stats_frame = Frame(self.stats_box, bg=background)
+        self.stats_frame.grid()
+
+        # Set up Stats Heading (row 0)
+        self.stats_heading = Label(self.stats_frame, text="Game Statistics", font="arial 14 bold", bg=background)
+        self.stats_heading.grid(row=0)
+
+        # Stats text (label, row 1)
+        self.stats_info_text = Label(self.stats_frame, text="Below are your game statistics for your played games. "
+                                                           "If you want to view your full stats 'Export' your statistics "
+                                                           "into a file.", justify=LEFT, width=40, bg=background,
+                               wrap=250)
+        self.stats_info_text.grid(column=0, row=1)
+
+        self.button_frame = Frame(self.stats_frame, bg=background)
+        self.button_frame.grid(row=3)
+        # Export Button (row 3)
+        self.export_btn = Button(self.button_frame, text="Export", width=10, bg="#c9e4de", font="arial 10 bold")
+        self.export_btn.grid(row=0, column=0, padx=10)
+
+        # Dismiss button (row 3)
+        self.dismiss_btn = Button(self.button_frame, text="Dismiss", width=10, bg="#f9c6c9",
+                                  font="arial 10 bold", command=partial(self.close_stats, partner))
+        self.dismiss_btn.grid(row=0, column=1, pady=10)
+
+    def close_stats(self, partner):
+        # Put help button back to normal...
+        partner.stats_button.config(state=NORMAL)
+        self.stats_box.destroy()
 
 
 # main routine
