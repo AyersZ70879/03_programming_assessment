@@ -352,13 +352,24 @@ class GameStats:
                                wrap=250)
         self.stats_info_text.grid(column=0, row=1)
 
+        # set up display stats frame (row 2)
+        self.displays_frame = Frame(self.stats_frame, bg=background)
+        self.displays_frame.grid(row=2)
+
+        # Display stats (rounds, won and lost)
+        self.stats_display = Label(self.displays_frame, text="TEST", bg=background, wrap=250,
+                                   font="arial 12 bold")
+        self.stats_display.grid(row=0)
+
+        # set up button frame (row 3)
         self.button_frame = Frame(self.stats_frame, bg=background)
         self.button_frame.grid(row=3)
-        # Export Button (row 3)
+
+        # Export Button (row 0, column 0)
         self.export_btn = Button(self.button_frame, text="Export", width=10, bg="#c9e4de", font="arial 10 bold")
         self.export_btn.grid(row=0, column=0, padx=10)
 
-        # Dismiss button (row 3)
+        # Dismiss button (row 0, column 1)
         self.dismiss_btn = Button(self.button_frame, text="Dismiss", width=10, bg="#f9c6c9",
                                   font="arial 10 bold", command=partial(self.close_stats, partner))
         self.dismiss_btn.grid(row=0, column=1, pady=10)
