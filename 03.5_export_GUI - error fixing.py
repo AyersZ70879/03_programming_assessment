@@ -257,6 +257,7 @@ class Game:
                 self.next_button.config(state=NORMAL)
 
                 # add to loss
+                global loss
                 loss = self.loss.get()
                 loss += 1
                 self.loss.set(loss)
@@ -292,9 +293,11 @@ class Game:
                 self.check_button.config(state=DISABLED)
 
                 # get won
+
                 won = self.won.get()
                 won += 1
                 self.won.set(won)
+                print(won)
 
                 # user answer feedback
                 self.capital_answer.config(text="Correct!")
@@ -309,7 +312,7 @@ class Game:
                 won = self.won.get()
                 won += 1
                 self.won.set(won)
-
+                print(won)
                 # user answer feedback
                 self.capital_answer.config(text="Correct!\n\n"
                                                 "Game Over! Click Game Stats to view your game "
