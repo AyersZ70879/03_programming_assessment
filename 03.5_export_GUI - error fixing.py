@@ -217,7 +217,6 @@ class Game:
         # get user input
         capital_guess = self.capital_entry.get().lower()   # ***for error testing this code works***
 
-
         # error setup
         error_back = "#ffafaf"
         has_errors = "no"
@@ -242,6 +241,7 @@ class Game:
                 self.next_button.config(state=NORMAL)
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
+                
             else:
                 # disable check button
                 self.check_button.config(state=DISABLED)
@@ -277,6 +277,11 @@ class Game:
         if has_errors == "yes":
             self.capital_entry.config(bg=error_back)
             self.capital_answer.config(text=error_feedback)
+
+        # Get Game Stats
+        display_game_stats = "Rounds Played: {} \n " \
+                             "Rounds Won: {} \n" \
+                             "Rounds Lost: {} \n".format(get_rounds, )
 
     def to_quit(self):
         root.destroy()
@@ -335,6 +340,8 @@ class GameStats:
 
         # If users press the cross at top, closes help and 'releases' help button
         self.stats_box.protocol('WM_DELETE_WINDOW', partial(self.close_stats, partner))
+
+
 
         # Set up GUI Frame
 
