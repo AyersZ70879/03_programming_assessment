@@ -241,7 +241,7 @@ class Game:
                 self.next_button.config(state=NORMAL)
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
-                
+
             else:
                 # disable check button
                 self.check_button.config(state=DISABLED)
