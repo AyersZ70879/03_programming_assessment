@@ -33,16 +33,12 @@ class Game:
         # initialise variables
         # rounds set up
         self.rounds = IntVar()
-        # win and loss set up
-        self.won = IntVar()
-        self.loss = IntVar()
-        # create global variable for loss and won
-        global won
-        global loss
+
 
         # List for holding stats
-        self.game_stats_list = []
-
+        self.game_stats_list_l = [0]
+        self.game_stats_list_w = [0]
+        self.game_stats_b = []
 
         # GUI Setup
         self.game_box = Toplevel()
@@ -148,6 +144,7 @@ class Game:
     def stats(self):
         get_stats = GameStats(self)
 
+
     # Help section
     def help(self):
         get_help = Help(self)
@@ -231,6 +228,14 @@ class Game:
         # get user input
         capital_guess = self.capital_entry.get().lower()   # ***for error testing this code works***
 
+        # create global variable for loss and won
+        global won
+        global loss
+        
+        # make global variables have int
+        won = 0
+        loss = 0
+
         # error setup
         error_back = "#ffafaf"
         has_errors = "no"
@@ -256,10 +261,9 @@ class Game:
                 self.next_button.config(state=NORMAL)
 
                 # add to loss
-                loss = self.loss.get()
+                loss = self.game_stats_list_l[0]
                 loss += 1
-                self.loss.set(loss)
-
+                self.game_stats_list_l = loss
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
 
@@ -271,9 +275,9 @@ class Game:
                 self.capital_entry.config(bg=error_back)
 
                 # get loss
-                loss = self.loss.get()
+                loss = self.game_stats_list_l[0]
                 loss += 1
-                self.loss.set(loss)
+                self.game_stats_list_l = loss
 
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}.\n\n"
@@ -292,10 +296,9 @@ class Game:
 
                 # get won
 
-                won = self.won.get()
+                won = self.game_stats_list_w[0]
                 won += 1
-                self.won.set(won)
-                print(won)
+                self.game_stats_list_w[0] = won
 
                 # user answer feedback
                 self.capital_answer.config(text="Correct!")
@@ -307,10 +310,9 @@ class Game:
                 self.capital_entry.config(bg="#CAFFBF")
 
                 # get won
-                won = self.won.get()
+                won = self.game_stats_list_w[0]
                 won += 1
-                self.won.set(won)
-                print(won)
+                self.game_stats_list_w[0] = won
                 # user answer feedback
                 self.capital_answer.config(text="Correct!\n\n"
                                                 "Game Over! Click Game Stats to view your game "
@@ -324,9 +326,13 @@ class Game:
         # Get Game Stats
         display_game_stats = "Rounds Played: {} \n" \
                              "Rounds Won: {} \n" \
-                             "Rounds Lost: {} \n".format(get_rounds, self.won, self.loss)
+                             "Rounds Lost: {} \n".format(get_rounds, won, loss)
 
-        self.game_stats_list.append(display_game_stats)
+        self.game_stats_b.append(display_game_stats)
+
+        # for testing purposes
+        print("self.won and self.loss")
+        print(self.game_stats_list_w, self.game_stats_list_l)
 
     def to_quit(self):
         root.destroy()
