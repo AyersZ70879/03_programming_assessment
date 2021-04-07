@@ -38,7 +38,7 @@ class Game:
         # List for holding stats
         self.game_stats_list_l = [0]
         self.game_stats_list_w = [0]
-        self.game_stats_b = []
+        self.game_stats_b = [0]
 
         # GUI Setup
         self.game_box = Toplevel()
@@ -132,8 +132,10 @@ class Game:
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#468faf", fg="white", command=lambda: self.stats(self.game_stats_b))
+                                   bg="#468faf", fg="white", command=lambda: self.stats(self.game_stats_b[0]))
         self.stats_button.grid(row=0, column=1, padx=2)
+        # Disable stats button
+        self.stats_button.config(state=DISABLED)
 
         # Quit Button
         self.quit_button = Button(self.game_frame, text="Quit", fg="white", bg="#f07167", font="Arial 15 bold",
@@ -222,6 +224,8 @@ class Game:
 
     # Check user input function
     def check(self):
+        # Disable stats button
+        self.stats_button.config(state=NORMAL)
         # Get capital from above function
         get_capital_answer_lo = capital_ans.lower()
 
@@ -315,13 +319,10 @@ class Game:
         # Get Game Stats
         display_game_stats = "Rounds Played: {} \n" \
                              "Rounds Won: {} \n" \
-                             "Rounds Lost: {} \n".format(get_rounds, won, loss)
+                             "Rounds Lost: {} \n".format(get_rounds, self.game_stats_list_w[0], self.game_stats_list_l[0])
 
-        self.game_stats_b.append(display_game_stats)
+        self.game_stats_b[0] = display_game_stats
 
-        # for testing purposes
-        print("self.won and self.loss")
-        print(self.game_stats_list_w, self.game_stats_list_l)
 
     def to_quit(self):
         root.destroy()
@@ -401,11 +402,10 @@ class GameStats:
         self.displays_frame = Frame(self.stats_frame, bg=background)
         self.displays_frame.grid(row=2)
 
-        for item in game_stats:
-            # Display stats (rounds, won and lost)
-            self.stats_display = Label(self.displays_frame, text=item, bg=background, wrap=250,
-                                   font="arial 12 bold")
-            self.stats_display.grid(row=0)
+        # Display stats (rounds, won and lost)
+        self.stats_display = Label(self.displays_frame, text=game_stats, bg=background, wrap=250,
+                                       font="arial 12 bold")
+        self.stats_display.grid(row=0)
 
         # set up button frame (row 3)
         self.button_frame = Frame(self.stats_frame, bg=background)

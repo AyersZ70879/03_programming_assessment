@@ -62,26 +62,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="03_export_GUI.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="03_export_GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/03_export_GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6545">
-              <caret line="388" column="19" selection-start-line="388" selection-start-column="19" selection-end-line="388" selection-end-column="19" />
+            <state relative-caret-position="788">
+              <caret line="427" column="0" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
               <folding>
-                <element signature="e#15601#19822#0" expanded="false" />
+                <element signature="e#12171#13561#0" expanded="false" />
+                <element signature="e#16072#16172#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="03.5_export_GUI - error fixing.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="03.5_export_GUI - error fixing.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/03.5_export_GUI - error fixing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="246" column="31" selection-start-line="246" selection-start-column="31" selection-end-line="246" selection-end-column="31" />
+            <state relative-caret-position="258">
+              <caret line="214" column="51" selection-start-line="214" selection-start-column="51" selection-end-line="214" selection-end-column="51" />
               <folding>
-                <element signature="e#12102#13492#0" expanded="false" />
-                <element signature="e#16037#16137#0" expanded="false" />
+                <element signature="e#12171#13561#0" expanded="false" />
+                <element signature="e#16072#16172#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -90,7 +91,7 @@
       <file leaf-file-name="AA_complied_game_v1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/AA_complied_game_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1346">
+            <state relative-caret-position="4760">
               <caret line="282" column="43" selection-start-line="282" selection-start-column="43" selection-end-line="282" selection-end-column="43" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -132,8 +133,8 @@
         <option value="$PROJECT_DIR$/01_start_GUI.py" />
         <option value="$PROJECT_DIR$/04_complied_assessment_game_v1.py" />
         <option value="$PROJECT_DIR$/02_game_GUI.py" />
-        <option value="$PROJECT_DIR$/03_export_GUI.py" />
         <option value="$PROJECT_DIR$/03.5_export_GUI - error fixing.py" />
+        <option value="$PROJECT_DIR$/03_export_GUI.py" />
       </list>
     </option>
   </component>
@@ -167,8 +168,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -179,6 +178,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -186,7 +187,7 @@
     <property name="ToolWindowEvent Log.ShowToolbar" value="false" />
     <property name="ToolWindowRun.ShowToolbar" value="false" />
   </component>
-  <component name="RunManager" selected="Python.03.5_export_GUI - error fixing">
+  <component name="RunManager" selected="Python.03_export_GUI">
     <configuration default="false" name="02_game_GUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -415,11 +416,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.03.5_export_GUI - error fixing" />
-        <item index="1" class="java.lang.String" itemvalue="Python.02_game_GUI" />
-        <item index="2" class="java.lang.String" itemvalue="Python.05_game_stats_GUI" />
-        <item index="3" class="java.lang.String" itemvalue="Python.AA_complied_game_v1" />
-        <item index="4" class="java.lang.String" itemvalue="Python.03_export_GUI" />
+        <item index="0" class="java.lang.String" itemvalue="Python.03_export_GUI" />
+        <item index="1" class="java.lang.String" itemvalue="Python.03.5_export_GUI - error fixing" />
+        <item index="2" class="java.lang.String" itemvalue="Python.02_game_GUI" />
+        <item index="3" class="java.lang.String" itemvalue="Python.05_game_stats_GUI" />
+        <item index="4" class="java.lang.String" itemvalue="Python.AA_complied_game_v1" />
       </list>
     </recent_temporary>
   </component>
@@ -445,7 +446,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43863395" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50800425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -530,7 +531,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#15601#19822#0" expanded="false" />
+            <element signature="e#12171#13561#0" expanded="false" />
+            <element signature="e#16072#16172#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -982,16 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/03_export_GUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6545">
-          <caret line="388" column="19" selection-start-line="388" selection-start-column="19" selection-end-line="388" selection-end-column="19" />
-          <folding>
-            <element signature="e#15601#19822#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/02_game_GUI.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2465">
@@ -1016,7 +1008,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../02_mystery_box_game/AA_complied_game_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1346">
+        <state relative-caret-position="4760">
           <caret line="282" column="43" selection-start-line="282" selection-start-column="43" selection-end-line="282" selection-end-column="43" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
@@ -1028,11 +1020,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/03.5_export_GUI - error fixing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="246" column="31" selection-start-line="246" selection-start-column="31" selection-end-line="246" selection-end-column="31" />
+        <state relative-caret-position="258">
+          <caret line="214" column="51" selection-start-line="214" selection-start-column="51" selection-end-line="214" selection-end-column="51" />
           <folding>
-            <element signature="e#12102#13492#0" expanded="false" />
-            <element signature="e#16037#16137#0" expanded="false" />
+            <element signature="e#12171#13561#0" expanded="false" />
+            <element signature="e#16072#16172#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/03_export_GUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="788">
+          <caret line="427" column="0" selection-start-line="427" selection-start-column="0" selection-end-line="427" selection-end-column="0" />
+          <folding>
+            <element signature="e#12171#13561#0" expanded="false" />
+            <element signature="e#16072#16172#0" expanded="false" />
           </folding>
         </state>
       </provider>
