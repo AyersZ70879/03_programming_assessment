@@ -251,6 +251,10 @@ class Game:
 
         # if guess is incorrect
         elif capital_guess != get_capital_answer_lo:
+            # get loss
+            loss = self.game_stats_list_l[0]
+            loss += 1
+            self.game_stats_list_l[0] = loss
             if get_rounds != how_many_r:
 
                 # disable check button
@@ -260,10 +264,6 @@ class Game:
                 # enable next button
                 self.next_button.config(state=NORMAL)
 
-                # add to loss
-                loss = self.game_stats_list_l[0]
-                loss += 1
-                self.game_stats_list_l[0] = loss
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
 
@@ -274,11 +274,6 @@ class Game:
                 # change entry background
                 self.capital_entry.config(bg=error_back)
 
-                # get loss
-                loss = self.game_stats_list_l[0]
-                loss += 1
-                self.game_stats_list_l[0] = loss
-
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}.\n\n"
                                                 "Game Over! Click Game Stats to view your game "
@@ -286,6 +281,10 @@ class Game:
 
         # if guess is correct
         else:
+            # get won
+            won = self.game_stats_list_w[0]
+            won += 1
+            self.game_stats_list_w[0] = won
             if get_rounds != how_many_r:
                 # enable next button
                 self.next_button.config(state=NORMAL)
@@ -293,11 +292,6 @@ class Game:
                 self.capital_entry.config(bg="#CAFFBF")
                 # disable check button
                 self.check_button.config(state=DISABLED)
-
-                # get won
-                won = self.game_stats_list_w[0]
-                won += 1
-                self.game_stats_list_w[0] = won
 
                 # user answer feedback
                 self.capital_answer.config(text="Correct!")
@@ -308,10 +302,6 @@ class Game:
                 # change bg to green in entry box
                 self.capital_entry.config(bg="#CAFFBF")
 
-                # get won
-                won = self.game_stats_list_w[0]
-                won += 1
-                self.game_stats_list_w[0] = won
                 # user answer feedback
                 self.capital_answer.config(text="Correct!\n\n"
                                                 "Game Over! Click Game Stats to view your game "
