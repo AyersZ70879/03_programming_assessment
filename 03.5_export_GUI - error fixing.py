@@ -263,7 +263,7 @@ class Game:
                 # add to loss
                 loss = self.game_stats_list_l[0]
                 loss += 1
-                self.game_stats_list_l = loss
+                self.game_stats_list_l[0] = loss
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
 
@@ -277,7 +277,7 @@ class Game:
                 # get loss
                 loss = self.game_stats_list_l[0]
                 loss += 1
-                self.game_stats_list_l = loss
+                self.game_stats_list_l[0] = loss
 
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}.\n\n"
@@ -295,7 +295,6 @@ class Game:
                 self.check_button.config(state=DISABLED)
 
                 # get won
-
                 won = self.game_stats_list_w[0]
                 won += 1
                 self.game_stats_list_w[0] = won
