@@ -132,7 +132,7 @@ class Game:
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#468faf", fg="white", command=self.stats)
+                                   bg="#468faf", fg="white", command=lambda: self.stats(self.game_stats_b))
         self.stats_button.grid(row=0, column=1, padx=2)
 
         # Quit Button
@@ -141,8 +141,8 @@ class Game:
         self.quit_button.grid(row=8, pady=10)
 
     # Game Stats section
-    def stats(self):
-        get_stats = GameStats(self)
+    def stats(self, game_stats):
+        get_stats = GameStats(self, game_stats)
 
 
     # Help section
@@ -231,7 +231,7 @@ class Game:
         # create global variable for loss and won
         global won
         global loss
-        
+
         # make global variables have int
         won = 0
         loss = 0
@@ -380,7 +380,7 @@ class Help:
 
 # Game Stats GUI
 class GameStats:
-    def __init__(self, partner):
+    def __init__(self, partner, game_stats):
         background = "#c6def1"
 
         # disable stats button
