@@ -36,6 +36,9 @@ class Game:
         # win and loss set up
         self.won = IntVar()
         self.loss = IntVar()
+        # create global variable for loss and won
+        global won
+        global loss
 
         # List for holding stats
         self.game_stats_list = []
@@ -225,10 +228,6 @@ class Game:
         # Get capital from above function
         get_capital_answer_lo = capital_ans.lower()
 
-        # create global variable for loss and won
-        global won
-        global loss
-
         # get user input
         capital_guess = self.capital_entry.get().lower()   # ***for error testing this code works***
 
@@ -257,7 +256,6 @@ class Game:
                 self.next_button.config(state=NORMAL)
 
                 # add to loss
-                global loss
                 loss = self.loss.get()
                 loss += 1
                 self.loss.set(loss)
@@ -326,7 +324,7 @@ class Game:
         # Get Game Stats
         display_game_stats = "Rounds Played: {} \n" \
                              "Rounds Won: {} \n" \
-                             "Rounds Lost: {} \n".format(get_rounds, won, loss)
+                             "Rounds Lost: {} \n".format(get_rounds, self.won, self.loss)
 
         self.game_stats_list.append(display_game_stats)
 
