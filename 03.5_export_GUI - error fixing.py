@@ -412,10 +412,11 @@ class GameStats:
         self.displays_frame = Frame(self.stats_frame, bg=background)
         self.displays_frame.grid(row=2)
 
-        # Display stats (rounds, won and lost)
-        self.stats_display = Label(self.displays_frame, text="TEST", bg=background, wrap=250,
+        for item in game_stats:
+            # Display stats (rounds, won and lost)
+            self.stats_display = Label(self.displays_frame, text=item, bg=background, wrap=250,
                                    font="arial 12 bold")
-        self.stats_display.grid(row=0)
+            self.stats_display.grid(row=0)
 
         # set up button frame (row 3)
         self.button_frame = Frame(self.stats_frame, bg=background)
