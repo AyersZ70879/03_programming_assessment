@@ -36,19 +36,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="04_complied_assessment_game_v1.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="04_complied_assessment_game_v1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/04_complied_assessment_game_v1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="400" column="0" selection-start-line="400" selection-start-column="0" selection-end-line="400" selection-end-column="0" />
+            <state relative-caret-position="119">
+              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
               <folding>
                 <element signature="e#128#3888#0" expanded="false" />
-                <element signature="e#9013#9052#0" expanded="false" />
                 <element signature="e#9101#9336#0" expanded="false" />
-                <element signature="e#9420#11367#0" expanded="false" />
                 <element signature="e#14987#16377#0" expanded="false" />
-                <element signature="e#16415#18846#0" expanded="false" />
-                <element signature="e#18892#18992#0" expanded="false" />
+                <element signature="e#18955#19055#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -80,13 +77,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="03.5_export_GUI - error fixing.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="03.5_export_GUI - error fixing.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/03.5_export_GUI - error fixing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+            <state relative-caret-position="153">
+              <caret line="328" column="4" selection-start-line="328" selection-start-column="4" selection-end-line="328" selection-end-column="4" />
               <folding>
                 <element signature="e#128#645#0" expanded="false" />
+                <element signature="e#664#12142#0" expanded="false" />
                 <element signature="e#5904#6460#0" expanded="false" />
                 <element signature="e#6544#8360#0" expanded="false" />
                 <element signature="e#8423#12091#0" expanded="false" />
@@ -457,7 +455,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977587" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.506937" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -521,12 +519,9 @@
           <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
           <folding>
             <element signature="e#128#3888#0" expanded="false" />
-            <element signature="e#9013#9052#0" expanded="false" />
             <element signature="e#9101#9336#0" expanded="false" />
-            <element signature="e#9420#11367#0" expanded="false" />
             <element signature="e#14987#16377#0" expanded="false" />
-            <element signature="e#16415#18846#0" expanded="false" />
-            <element signature="e#18892#18992#0" expanded="false" />
+            <element signature="e#18955#19055#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -585,12 +580,9 @@
           <caret line="137" column="21" selection-start-line="137" selection-start-column="21" selection-end-line="137" selection-end-column="21" />
           <folding>
             <element signature="e#128#3888#0" expanded="false" />
-            <element signature="e#9013#9052#0" expanded="false" />
             <element signature="e#9101#9336#0" expanded="false" />
-            <element signature="e#9420#11367#0" expanded="false" />
             <element signature="e#14987#16377#0" expanded="false" />
-            <element signature="e#16415#18846#0" expanded="false" />
-            <element signature="e#18892#18992#0" expanded="false" />
+            <element signature="e#18955#19055#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1039,12 +1031,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/04_complied_assessment_game_v1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding>
+            <element signature="e#128#3888#0" expanded="false" />
+            <element signature="e#9101#9336#0" expanded="false" />
+            <element signature="e#14987#16377#0" expanded="false" />
+            <element signature="e#18955#19055#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/03.5_export_GUI - error fixing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="323" column="0" selection-start-line="323" selection-start-column="0" selection-end-line="323" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="328" column="4" selection-start-line="328" selection-start-column="4" selection-end-line="328" selection-end-column="4" />
           <folding>
             <element signature="e#128#645#0" expanded="false" />
+            <element signature="e#664#12142#0" expanded="false" />
             <element signature="e#5904#6460#0" expanded="false" />
             <element signature="e#6544#8360#0" expanded="false" />
             <element signature="e#8423#12091#0" expanded="false" />
@@ -1052,22 +1058,6 @@
             <element signature="e#13597#16024#0" expanded="false" />
             <element signature="e#16059#20279#0" expanded="false" />
             <element signature="e#20325#20425#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/04_complied_assessment_game_v1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="400" column="0" selection-start-line="400" selection-start-column="0" selection-end-line="400" selection-end-column="0" />
-          <folding>
-            <element signature="e#128#3888#0" expanded="false" />
-            <element signature="e#9013#9052#0" expanded="false" />
-            <element signature="e#9101#9336#0" expanded="false" />
-            <element signature="e#9420#11367#0" expanded="false" />
-            <element signature="e#14987#16377#0" expanded="false" />
-            <element signature="e#16415#18846#0" expanded="false" />
-            <element signature="e#18892#18992#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -471,7 +471,8 @@ class GameStats:
 
         # Stats text (label, row 1)
         self.stats_info_text = Label(self.stats_frame, text="Below are your game statistics for your played games. "
-                                                            "If you want to view your full stats 'Export' your statistics "
+                                                            "If you want to view your full stats 'Export' your "
+                                                            "statistics "
                                                             "into a file.", justify=LEFT, width=40, bg=background,
                                      wrap=250)
         self.stats_info_text.grid(column=0, row=1)
