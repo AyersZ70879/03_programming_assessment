@@ -35,9 +35,12 @@ class Game:
         self.rounds = IntVar()
 
         # List for holding stats
+        #  For Game Stats display:
         self.game_stats_list_l = [0]
         self.game_stats_list_w = [0]
         self.game_stats_b = [0]
+        # For .txt file display
+        self.all_round_stats = [""]
 
         # GUI Setup
         self.game_box = Toplevel()
@@ -131,7 +134,8 @@ class Game:
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#468faf", fg="white", command=lambda: self.stats(self.game_stats_b[0]))
+                                   bg="#468faf", fg="white", command=lambda: self.stats(self.game_stats_b[0],
+                                                                                        self.all_round_stats[0]))
         self.stats_button.grid(row=0, column=1, padx=2)
         # Disable stats button
         self.stats_button.config(state=DISABLED)
@@ -142,8 +146,8 @@ class Game:
         self.quit_button.grid(row=8, pady=10)
 
     # Game Stats section
-    def stats(self, game_stats):
-        get_stats = GameStats(self, game_stats)
+    def stats(self, game_stats, all_stats):
+        get_stats = GameStats(self, game_stats, all_stats)
 
 
     # Help section
@@ -202,6 +206,7 @@ class Game:
             randomised_reader = random.choice(reader)
 
             # Split into variables
+            global country
             country = randomised_reader[0]
             global capital_ans
             capital_ans = randomised_reader[1]
@@ -314,13 +319,18 @@ class Game:
             self.capital_entry.config(bg=error_back)
             self.capital_answer.config(text=error_feedback)
 
-        # Get Game Stats
+        # Get Game Stats - for Game Stats GUI display
         display_game_stats = "Rounds Played: {} \n" \
                              "Rounds Won: {} \n" \
                              "Rounds Lost: {} \n".format(get_rounds, self.game_stats_list_w[0], self.game_stats_list_l[0])
 
         self.game_stats_b[0] = display_game_stats
 
+        # Get all Game Stats - for Export .txt file display
+        all_game_stats_write = "{} - User Answer: {}  Correct Answer" \
+                               ": {}".format(country, self.capital_entry, capital_ans)
+
+        self.all_round_stats.append(all_game_stats_write)
 
     def to_quit(self):
         root.destroy()
@@ -368,7 +378,7 @@ class Help:
 
 # Game Stats GUI
 class GameStats:
-    def __init__(self, partner, game_stats):
+    def __init__(self, partner, game_stats, all_stats):
         background = "#c6def1"
 
         # disable stats button
@@ -411,7 +421,7 @@ class GameStats:
 
         # Export Button (row 0, column 0)
         self.export_btn = Button(self.button_frame, text="Export", width=10, bg="#c9e4de", font="arial 10 bold",
-                                 command=self.exp)
+                                 command=lambda: self.exp(game_stats, all_stats))
         self.export_btn.grid(row=0, column=0, padx=10)
 
         # Dismiss button (row 0, column 1)
@@ -419,8 +429,8 @@ class GameStats:
                                   font="arial 10 bold", command=partial(self.close_stats, partner))
         self.dismiss_btn.grid(row=0, column=1, pady=10)
 
-    def exp(self):
-        get_export = Export(self)
+    def exp(self, game_stats, all_stats):
+        get_export = Export(self, game_stats, all_stats)
 
     def close_stats(self, partner):
         # Put help button back to normal...
@@ -430,7 +440,7 @@ class GameStats:
 
 # Export section
 class Export:
-    def __init__(self, partner):
+    def __init__(self, partner, game_stats, all_stats):
 
         # Disable export button
         partner.export_btn.config(state=DISABLED)
@@ -475,14 +485,14 @@ class Export:
         self.save_frame.grid(row=5, pady=10)
 
         # Save and Cancel Buttons (row 0 of save_cancel_frame)
-        # self.save_button = Button(self.save_frame, text="Save", font="Arial 15 bold", bg="#003366",
-        #                         fg="white",
-        #                         command=partial(lambda: self.save_history(partner, game_history, all_game_stats)))
-        # self.save_button.grid(row=0, column=1)
+        self.save_button = Button(self.save_frame, text="Save", width=10, font="Arial 10 bold", bg="#A7B690",
+                                 fg="black", padx=10,
+                                 command=partial(lambda: self.save_history(partner, game_stats, all_stats)))
+        self.save_button.grid(row=0, column=1, padx=10)
 
         # Cancel button (row 0, column 1)
         self.cancel_btn = Button(self.save_frame, text="Cancel", width=10, bg="#f9c6c9",
-                                  font="arial 10 bold", command=partial(self.close_exp, partner))
+                                    font="arial 10 bold", command=partial(self.close_exp, partner))
         self.cancel_btn.grid(row=0, column=2, pady=10)
 
     def close_exp(self, partner):
@@ -490,7 +500,7 @@ class Export:
         partner.export_btn.config(state=NORMAL)
         self.export_box.destroy()
 
-    def save_history(self, partner, game_history, game_stats):
+    def save_history(self, partner, game_stats, all_stats):
 
         # assign problem variable
         problem = ""
@@ -540,7 +550,7 @@ class Export:
             f.write("\nRound Details\n\n")
 
             # Add new line at end of each item
-            for item in game_history:
+            for item in all_stats:
                 f.write(item + "\n")
 
             # close file
