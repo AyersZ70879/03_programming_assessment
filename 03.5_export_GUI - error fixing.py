@@ -40,7 +40,7 @@ class Game:
         self.game_stats_list_w = [0]
         self.game_stats_b = [0]
         # For .txt file display
-        self.all_round_stats = [""]
+        self.all_round_stats = []
 
         # GUI Setup
         self.game_box = Toplevel()
@@ -135,7 +135,7 @@ class Game:
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
                                    bg="#468faf", fg="white", command=lambda: self.stats(self.game_stats_b[0],
-                                                                                        self.all_round_stats[0]))
+                                                                                        self.all_round_stats))
         self.stats_button.grid(row=0, column=1, padx=2)
         # Disable stats button
         self.stats_button.config(state=DISABLED)
@@ -327,8 +327,8 @@ class Game:
         self.game_stats_b[0] = display_game_stats
 
         # Get all Game Stats - for Export .txt file display
-        all_game_stats_write = "{} - User Answer: {}  Correct Answer" \
-                               ": {}".format(country, self.capital_entry, capital_ans)
+        all_game_stats_write = "Round {}: {} - User Answer: '{}'  Correct Answer" \
+                               ": {}".format(get_rounds, country, capital_guess, capital_ans)
 
         self.all_round_stats.append(all_game_stats_write)
 
@@ -490,8 +490,6 @@ class Export:
                                  command=partial(lambda: self.save_history(partner, game_stats, all_stats)))
         self.save_button.grid(row=0, column=1, padx=10)
 
-        print(all_stats)
-
         # Cancel button (row 0, column 1)
         self.cancel_btn = Button(self.save_frame, text="Cancel", width=10, bg="#f9c6c9",
                                     font="arial 10 bold", command=partial(self.close_exp, partner))
@@ -548,7 +546,7 @@ class Export:
             f.write(game_stats)
 
             # Heading for Rounds
-            f.write("\nRound Details\n\n")
+            f.write("\nRound Details:\n\n")
 
             # Add new line at end of each item
             for item in all_stats:
