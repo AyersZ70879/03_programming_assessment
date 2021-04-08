@@ -410,13 +410,17 @@ class GameStats:
         self.button_frame.grid(row=3)
 
         # Export Button (row 0, column 0)
-        self.export_btn = Button(self.button_frame, text="Export", width=10, bg="#c9e4de", font="arial 10 bold")
+        self.export_btn = Button(self.button_frame, text="Export", width=10, bg="#c9e4de", font="arial 10 bold",
+                                 command=self.exp)
         self.export_btn.grid(row=0, column=0, padx=10)
 
         # Dismiss button (row 0, column 1)
         self.dismiss_btn = Button(self.button_frame, text="Dismiss", width=10, bg="#f9c6c9",
                                   font="arial 10 bold", command=partial(self.close_stats, partner))
         self.dismiss_btn.grid(row=0, column=1, pady=10)
+
+    def exp(self):
+        get_export = Export(self)
 
     def close_stats(self, partner):
         # Put help button back to normal...
@@ -426,10 +430,10 @@ class GameStats:
 
 # Export section
 class Export:
-    def __init__(self, partner, game_history, all_game_stats):
+    def __init__(self, partner):
 
         # Disable export button
-        partner.export_button.config(state=DISABLED)
+        partner.export_btn.config(state=DISABLED)
 
         # Sets up child window (ie: export box)
         self.export_box = Toplevel()
@@ -471,12 +475,25 @@ class Export:
         self.save_frame.grid(row=5, pady=10)
 
         # Save and Cancel Buttons (row 0 of save_cancel_frame)
-        self.save_button = Button(self.save_frame, text="Save", font="Arial 15 bold", bg="#003366",
-                                  fg="white",
-                                  command=partial(lambda: self.save_history(partner, game_history, all_game_stats)))
-        self.save_button.grid(row=0, column=1)
+        # self.save_button = Button(self.save_frame, text="Save", font="Arial 15 bold", bg="#003366",
+        #                         fg="white",
+        #                         command=partial(lambda: self.save_history(partner, game_history, all_game_stats)))
+        # self.save_button.grid(row=0, column=1)
+
+        # Cancel button (row 0, column 1)
+        self.cancel_btn = Button(self.save_frame, text="Cancel", width=10, bg="#f9c6c9",
+                                  font="arial 10 bold", command=partial(self.close_exp, partner))
+        self.cancel_btn.grid(row=0, column=2, pady=10)
+
+    def close_exp(self, partner):
+        # Put stats button back to normal...
+        partner.export_btn.config(state=NORMAL)
+        self.export_box.destroy()
 
     def save_history(self, partner, game_history, game_stats):
+
+        # assign problem variable
+        problem = ""
 
         # Regular expression to check filename is valid
         valid_char = "[A-Za-z0-9_]"
@@ -534,7 +551,7 @@ class Export:
 
     def close_export(self, partner):
         # Put export button back to normal...
-        partner.export_button.config(state=NORMAL)
+        partner.export_btn.config(state=NORMAL)
         self.export_box.destroy()
 
 
