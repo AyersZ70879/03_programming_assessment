@@ -490,6 +490,8 @@ class Export:
                                  command=partial(lambda: self.save_history(partner, game_stats, all_stats)))
         self.save_button.grid(row=0, column=1, padx=10)
 
+        print(all_stats)
+
         # Cancel button (row 0, column 1)
         self.cancel_btn = Button(self.save_frame, text="Cancel", width=10, bg="#f9c6c9",
                                     font="arial 10 bold", command=partial(self.close_exp, partner))
@@ -543,8 +545,7 @@ class Export:
             f.write("**Game Statistics**\n\n")
 
             # Game stats
-            for round in game_stats:
-                f.write(round + "\n")
+            f.write(game_stats)
 
             # Heading for Rounds
             f.write("\nRound Details\n\n")
