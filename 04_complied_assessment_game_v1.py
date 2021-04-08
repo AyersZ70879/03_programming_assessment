@@ -3,6 +3,7 @@ from functools import partial   # To prevent unwanted windows
 import random
 import csv
 
+
 class Start:
     def __init__(self, parent):
 
@@ -115,6 +116,11 @@ class Game:
         # List for holding stats
         self.round_stats_list = []
 
+        # List for holding stats
+        self.game_stats_list_l = [0]
+        self.game_stats_list_w = [0]
+        self.game_stats_b = [0]
+
         # GUI Setup
         self.game_box = Toplevel()
         self.game_frame = Frame(self.game_box)
@@ -208,13 +214,19 @@ class Game:
         self.help_button.grid(row=0, column=0, padx=2)
 
         self.stats_button = Button(self.help_export_frame, text="Game Stats", font="Arial 15 bold",
-                                   bg="#468faf", fg="white")
+                                   bg="#468faf", fg="white", command=lambda: self.stats(self.game_stats_b[0]))
         self.stats_button.grid(row=0, column=1, padx=2)
+        # Disable stats button
+        self.stats_button.config(state=DISABLED)
 
         # Quit Button
         self.quit_button = Button(self.game_frame, text="Quit", fg="white", bg="#f07167", font="Arial 15 bold",
                                   width=20, command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=8, pady=10)
+
+    # Game Stats section
+    def stats(self, game_stats):
+        get_stats = GameStats(self, game_stats)
 
     # Help section
     def help(self):
@@ -234,20 +246,30 @@ class Game:
         self.next_button.config(state=DISABLED)
         # enable check button
         self.check_button.config(state=ACTIVE)
+
         # Change background to white
         self.capital_entry.config(bg="white")
         # clear capital answer
         self.capital_answer.config(text="")
+
         # clear entry box field
         self.capital_entry.delete(0, 'end')
         # change question label
         self.country_q_label.config(text="What is the capital of: ")
+
         # add rounds when next button is clicked
         global get_rounds
+        #  make variable self.rounds list
         get_rounds = self.rounds.get()
+
+        # add a round
         get_rounds += 1
+        # set to self.rounds as next round
         self.rounds.set(get_rounds)
+
+        # display round
         self.rounds1_label.config(text=get_rounds)
+
         # for testing
         print(get_rounds)
 
@@ -283,11 +305,21 @@ class Game:
 
     # Check user input function
     def check(self):
+        # Disable stats button
+        self.stats_button.config(state=NORMAL)
         # Get capital from above function
         get_capital_answer_lo = capital_ans.lower()
 
         # get user input
         capital_guess = self.capital_entry.get().lower()  # ***for error testing this code works***
+
+        # create global variable for loss and won
+        global won
+        global loss
+
+        # make global variables have int
+        won = 0
+        loss = 0
 
         # error setup
         error_back = "#ffafaf"
@@ -304,20 +336,26 @@ class Game:
 
         # if guess is incorrect
         elif capital_guess != get_capital_answer_lo:
+            # get loss
+            loss = self.game_stats_list_l[0]
+            loss += 1
+            self.game_stats_list_l[0] = loss
+
+            # disable check button
+            self.check_button.config(state=DISABLED)
+            # change entry background
+            self.capital_entry.config(bg=error_back)
+
+            # if there are rounds left
             if get_rounds != how_many_r:
-                # disable check button
-                self.check_button.config(state=DISABLED)
-                # change entry background
-                self.capital_entry.config(bg=error_back)
                 # enable next button
                 self.next_button.config(state=NORMAL)
+
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}".format(capital_ans))
+
+            # if there are no rounds left
             else:
-                # disable check button
-                self.check_button.config(state=DISABLED)
-                # change entry background
-                self.capital_entry.config(bg=error_back)
                 # user answer feedback
                 self.capital_answer.config(text="Incorrect! The capital is {}.\n\n"
                                                 "Game Over! Click Game Stats to view your game "
@@ -325,20 +363,26 @@ class Game:
 
         # if guess is correct
         else:
+            # get won
+            won = self.game_stats_list_w[0]
+            won += 1
+            self.game_stats_list_w[0] = won
+
+            # change bg to green in entry box
+            self.capital_entry.config(bg="#CAFFBF")
+            # disable check button
+            self.check_button.config(state=DISABLED)
+
+            #  if there are rounds left
             if get_rounds != how_many_r:
                 # enable next button
                 self.next_button.config(state=NORMAL)
-                # change bg to green in entry box
-                self.capital_entry.config(bg="#CAFFBF")
-                # disable check button
-                self.check_button.config(state=DISABLED)
+
                 # user answer feedback
                 self.capital_answer.config(text="Correct!")
+
+            # if there are no rounds left
             else:
-                # disable check button
-                self.check_button.config(state=DISABLED)
-                # change bg to green in entry box
-                self.capital_entry.config(bg="#CAFFBF")
                 # user answer feedback
                 self.capital_answer.config(text="Correct!\n\n"
                                                 "Game Over! Click Game Stats to view your game "
@@ -349,6 +393,15 @@ class Game:
             self.capital_entry.config(bg=error_back)
             self.capital_answer.config(text=error_feedback)
 
+        # Get Game Stats
+        display_game_stats = "Rounds Played: {} \n" \
+                             "Rounds Won: {} \n" \
+                             "Rounds Lost: {} \n".format(get_rounds, self.game_stats_list_w[0],
+                                                         self.game_stats_list_l[0])
+
+        self.game_stats_b[0] = display_game_stats
+
+    # quit game stats
     def to_quit(self):
         root.destroy()
 
@@ -391,6 +444,64 @@ class Help:
         # Put help button back to normal...
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
+
+
+# Game Stats GUI
+class GameStats:
+    def __init__(self, partner, game_stats):
+        background = "#c6def1"
+
+        # disable stats button
+        partner.stats_button.config(state=DISABLED)
+
+        # Sets up child window (ie: stats box)
+        self.stats_box = Toplevel()
+
+        # If users press the cross at top, closes help and 'releases' help button
+        self.stats_box.protocol('WM_DELETE_WINDOW', partial(self.close_stats, partner))
+
+        # Set up GUI Frame
+
+        self.stats_frame = Frame(self.stats_box, bg=background)
+        self.stats_frame.grid()
+
+        # Set up Stats Heading (row 0)
+        self.stats_heading = Label(self.stats_frame, text="Game Statistics", font="arial 14 bold", bg=background)
+        self.stats_heading.grid(row=0)
+
+        # Stats text (label, row 1)
+        self.stats_info_text = Label(self.stats_frame, text="Below are your game statistics for your played games. "
+                                                            "If you want to view your full stats 'Export' your statistics "
+                                                            "into a file.", justify=LEFT, width=40, bg=background,
+                                     wrap=250)
+        self.stats_info_text.grid(column=0, row=1)
+
+        # set up display stats frame (row 2)
+        self.displays_frame = Frame(self.stats_frame, bg=background)
+        self.displays_frame.grid(row=2)
+
+        # Display stats (rounds, won and lost)
+        self.stats_display = Label(self.displays_frame, text=game_stats, bg=background, wrap=250,
+                                   font="arial 12 bold")
+        self.stats_display.grid(row=0)
+
+        # set up button frame (row 3)
+        self.button_frame = Frame(self.stats_frame, bg=background)
+        self.button_frame.grid(row=3)
+
+        # Export Button (row 0, column 0)
+        self.export_btn = Button(self.button_frame, text="Export", width=10, bg="#c9e4de", font="arial 10 bold")
+        self.export_btn.grid(row=0, column=0, padx=10)
+
+        # Dismiss button (row 0, column 1)
+        self.dismiss_btn = Button(self.button_frame, text="Dismiss", width=10, bg="#f9c6c9",
+                                  font="arial 10 bold", command=partial(self.close_stats, partner))
+        self.dismiss_btn.grid(row=0, column=1, pady=10)
+
+    def close_stats(self, partner):
+        # Put help button back to normal...
+        partner.stats_button.config(state=NORMAL)
+        self.stats_box.destroy()
 
 
 # main routine
