@@ -41,7 +41,7 @@ class Start:
                                         wrap=275, justify=LEFT)
         self.amount_error_label.grid(row=1, columnspan=2, pady=5)
 
-        # Play
+        # Play button and frame
         self.play_frame = Frame(padx=5, pady=5, width=200)
         self.play_frame.grid(row=3)
 
@@ -56,8 +56,7 @@ class Start:
     def check_rounds(self):
         starting_rounds_set = self.start_amount_entry.get()
 
-
-        # Set error background and colours (and assume no errors at the start
+        # Set error background and colours (and assume no errors at the start)
         error_back = "#ffafaf"
         has_errors = "no"
 
@@ -69,8 +68,10 @@ class Start:
         self.play_button.config(state=DISABLED)
 
         try:
+            # set starting rounds
             starting_rounds_set = int(starting_rounds_set)
 
+            # set boundaries for rounds entry
             if starting_rounds_set < 1:
                 has_errors = "yes"
                 error_feedback = "Sorry, the least amount of rounds you can play is 1"
@@ -78,6 +79,7 @@ class Start:
                 has_errors = "yes"
                 error_feedback = "The most amount of rounds you can play is 10"
 
+            # if user enters valid rounds
             else:
                 self.play_button.config(state=NORMAL)
                 self.add_rounds_button.config(state=DISABLED)
@@ -86,6 +88,7 @@ class Start:
             has_errors = "yes"
             error_feedback = "Please enter an integer (not text or decimals)"
 
+        # error display
         if has_errors == "yes":
             self.start_amount_entry.config(bg=error_back)
             self.amount_error_label.config(text=error_feedback)
@@ -108,7 +111,9 @@ class Start:
 class Game:
     def __init__(self, partner, starting_rounds):
 
+        # make global variable for how manyy rounds
         global how_many_r
+        # set as how many rounds user entered
         how_many_r = starting_rounds
 
         # initialise variables
@@ -201,6 +206,7 @@ class Game:
         self.rounds_frame = Frame(self.game_frame)
         self.rounds_frame.grid(row=6, pady=10, padx=10)
 
+        # Set up round display in Play GUI
         start_text = "Round: "
 
         self.rounds_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918",
@@ -210,7 +216,7 @@ class Game:
         self.rounds1_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918", text="0")
         self.rounds1_label.grid(row=0, column=1, pady=10)
 
-        # Help and Game stats button (row 7)
+        # Help and Game Stats button (row 7)
         self.help_export_frame = Frame(self.game_frame, bg="#DDF0FF")
         self.help_export_frame.grid(row=7, pady=10)
 
