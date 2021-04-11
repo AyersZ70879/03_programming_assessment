@@ -544,13 +544,13 @@ class Export:
 
         # Export Instructions (label, row 1)
         self.export_text = Label(self.export_frame, text="Enter a filename in the box below and press the "
-                                                         "Save button to save your calculation history to "
+                                                         "Save button to save your quiz history to "
                                                          "text file.", justify=LEFT, width=40, wrap=250)
         self.export_text.grid(row=1)
 
         # Warning text (label, row 2)
         self.export_text = Label(self.export_frame, text="If the filename you enter below already exists, "
-                                                         "its contents will be replaced with your calculation "
+                                                         "its contents will be replaced with your quiz "
                                                          "history", justify=LEFT, bg="#ffafaf", fg="maroon",
                                  font="Arial 10 italic", wrap=225, padx=10, pady=10)
         self.export_text.grid(row=2, pady=10)
