@@ -4,7 +4,9 @@ import random
 import csv
 
 
+# Class for Start GUI (so that user can setup initial parameters)
 class Start:
+    # Displays Start GUI for user to setup game
     def __init__(self, parent):
 
         # GUI to get number of rounds
@@ -52,7 +54,7 @@ class Start:
         # Disable play button at start
         self.play_button.config(state=DISABLED)
 
-    # check rounds function
+    # check rounds function - checks that the user entered a valid int for round setup
     def check_rounds(self):
         starting_rounds_set = self.start_amount_entry.get()
 
@@ -98,7 +100,7 @@ class Start:
             self.starting_rounds.set(starting_rounds_set)
             self.start_amount_entry.config(bg="#b7e4c7")
 
-    # to_game function
+    # to_game function - when game is setup sends user to start playing the game
     def to_game(self):
         starting_rounds_set = self.starting_rounds.get()
 
@@ -108,7 +110,9 @@ class Start:
         root.withdraw()
 
 
+# Class for Game GUI (so that user can play the game)
 class Game:
+    # displays the Game GUI for game to then run
     def __init__(self, partner, starting_rounds):
 
         # make global variable for how manyy rounds
@@ -235,18 +239,18 @@ class Game:
                                   width=20, command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=8, pady=10)
 
-    # Game Stats section
+    # Game Stats section - sends user to Game Stats GUI
     def stats(self, game_stats, all_stats):
         get_stats = GameStats(self, game_stats, all_stats)
 
-    # Help section
+    # Help section - send user to Help GUI
     def help(self):
         get_help = Help(self)
         get_help.help_text.configure(
             text="There will be a country and its flag shown and all you need to do it figure out "
                  "that country's capital! If you don't know take a guess.")
 
-    # retrieve information from csv file function
+    # retrieve information from csv file function for checking answer
     def get_ccp(self):
 
         # --- Configure display (below) ---
@@ -312,8 +316,7 @@ class Game:
             self.country_p_label.config(image=photo)
             self.country_p_label.photo = photo
 
-
-    # Check user input function
+    # Check user input function - views user input and returns whether ans = correct or incorrect
     def check(self):
         # Disable stats button
         self.stats_button.config(state=NORMAL)
@@ -417,13 +420,14 @@ class Game:
 
         self.all_round_stats.append(all_game_stats_write)
 
-    # quit game stats
+    # quit game - quits and destroys the game box
     def to_quit(self):
         root.destroy()
 
 
-# Help GUI
+# Help GUI - So that user can view help frame and understand what to do
 class Help:
+    #  Help GUI display setup
     def __init__(self, partner):
         background = "#fbc4ab"
 
@@ -456,14 +460,16 @@ class Help:
                                   font="arial 10 bold", command=partial(self.close_help, partner))
         self.dismiss_btn.grid(row=2, pady=10)
 
+    # closes the help box when user quits
     def close_help(self, partner):
         # Put help button back to normal...
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
 
 
-# Game Stats GUI
+# Game Stats GUI - So that user can view their game progress
 class GameStats:
+    # Set up Game Stats GUI and display stats
     def __init__(self, partner, game_stats, all_stats):
         background = "#c6def1"
 
@@ -516,17 +522,20 @@ class GameStats:
                                   font="arial 10 bold", command=partial(self.close_stats, partner))
         self.dismiss_btn.grid(row=0, column=1, pady=10)
 
+    # sends user to Export class to be able to export stats
     def exp(self, game_stats, all_stats):
         get_export = Export(self, game_stats, all_stats)
 
+    # closes the stats box when user quits
     def close_stats(self, partner):
         # Put help button back to normal...
         partner.stats_button.config(state=NORMAL)
         self.stats_box.destroy()
 
 
-# Export section
+# Export section - So that user can export their stats if wanted
 class Export:
+    # Displays Export GUI so that user can export their stats
     def __init__(self, partner, game_stats, all_stats):
 
         # Disable export button
@@ -582,11 +591,13 @@ class Export:
                                  font="arial 10 bold", command=partial(self.close_exp, partner))
         self.cancel_btn.grid(row=0, column=2, pady=10)
 
+    # closes export frame if user closes the box
     def close_exp(self, partner):
         # Put stats button back to normal...
         partner.export_btn.config(state=NORMAL)
         self.export_box.destroy()
 
+    # checks user enters valid file name and if yes exports the file
     def save_history(self, partner, game_stats, all_stats):
 
         # assign problem variable
@@ -645,13 +656,14 @@ class Export:
             # close dialogue
             self.close_export(partner)
 
+    # closes the export frame when user enters valid file name and exports stats
     def close_export(self, partner):
         # Put export button back to normal...
         partner.export_btn.config(state=NORMAL)
         self.export_box.destroy()
 
 
-# main routine
+# main routine - runs game
 if __name__ == "__main__":
     root = Tk()
     root.title("Country - Capital Game")
