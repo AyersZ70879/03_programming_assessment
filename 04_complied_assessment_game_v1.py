@@ -281,9 +281,6 @@ class Game:
         # display round
         self.rounds1_label.config(text=get_rounds)
 
-        # for testing
-        print(get_rounds)
-
         # Open csv file and get provided information
         with open("00_country_capital.csv") as f:
             reader = csv.reader(f)
@@ -297,9 +294,12 @@ class Game:
 
             # Split into variables
             global country
+            # get country to display
             country = randomised_reader[0]
+            # get the correct capital answer
             global capital_ans
             capital_ans = randomised_reader[1]
+            # get the image file name
             image_file = randomised_reader[2]
 
             # -- Display for game --
@@ -312,8 +312,6 @@ class Game:
             self.country_p_label.config(image=photo)
             self.country_p_label.photo = photo
 
-        # *** For testing Purposes ***
-        print(capital_ans)
 
     # Check user input function
     def check(self):
