@@ -4,7 +4,7 @@ import random
 import csv
 
 
-# Class for Start GUI (so that user can setup initial parameters)
+# Class for Start GUI - so that user can setup initial parameters
 class Start:
     # Displays Start GUI for user to setup game
     def __init__(self, parent):
@@ -110,7 +110,7 @@ class Start:
         root.withdraw()
 
 
-# Class for Game GUI (so that user can play the game)
+# Class for Game GUI - so that user can play the game
 class Game:
     # displays the Game GUI for game to then run
     def __init__(self, partner, starting_rounds):
@@ -246,9 +246,13 @@ class Game:
     # Help section - send user to Help GUI
     def help(self):
         get_help = Help(self)
+        # get display help text to display in Help GUI
         get_help.help_text.configure(
-            text="There will be a country and its flag shown and all you need to do it figure out "
-                 "that country's capital! If you don't know take a guess.")
+            text="Press 'Start Game' to begin the first round of the game. A country and flag will be displayed and "
+                 "a capital can then be entered into the entry field. \n\nPress 'Check' to check your answer and then "
+                 "'Next' to begin the next round.\n\n To view your progress click the 'Game Stats' button to see how "
+                 "many answers you've gotten correct. From there, if you wish, you can export your stats into a text "
+                 "file where they will be displayed fully, round by round. \n\nGood Luck!")
 
     # retrieve information from csv file function for checking answer
     def get_ccp(self):
