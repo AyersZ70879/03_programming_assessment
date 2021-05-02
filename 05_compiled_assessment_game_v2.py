@@ -248,9 +248,9 @@ class Game:
         get_help = Help(self)
         # get display help text to display in Help GUI
         get_help.help_text.configure(
-            text="Press 'Start Game' to begin the first round of the game. A country and flag will be displayed and "
+            text="Press 'Start Game' to begin the first question of the game. A country and flag will be displayed and "
                  "a capital can then be entered into the entry field. \n\nPress 'Check' to check your answer and then "
-                 "'Next' to begin the next round.\n\n To view your progress click the 'Game Stats' button to see how "
+                 "'Next' to begin the next question.\n\n To view your progress click the 'Game Stats' button to see how "
                  "many answers you've gotten correct. From there, if you wish, you can export your stats into a text "
                  "file where they will be displayed fully, round by round. \n\nGood Luck!")
 
