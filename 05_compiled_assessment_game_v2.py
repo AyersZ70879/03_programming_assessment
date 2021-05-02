@@ -411,9 +411,9 @@ class Game:
             self.capital_answer.config(text=error_feedback)
 
         # Get Game Stats
-        display_game_stats = "Rounds Played: {} \n" \
-                             "Rounds Won: {} \n" \
-                             "Rounds Lost: {} \n".format(get_rounds, self.game_stats_list_w[0],
+        display_game_stats = "Questions Answered: {} \n" \
+                             "Questions Correct: {} \n" \
+                             "Questions Incorrect: {} \n".format(get_rounds, self.game_stats_list_w[0],
                                                          self.game_stats_list_l[0])
 
         self.game_stats_b[0] = display_game_stats
