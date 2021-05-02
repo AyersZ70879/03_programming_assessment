@@ -211,7 +211,7 @@ class Game:
         self.rounds_frame.grid(row=6, pady=10, padx=10)
 
         # Set up round display in Play GUI
-        start_text = "Round: "
+        start_text = "Question: "
 
         self.rounds_label = Label(self.rounds_frame, font="Arial 12 bold", fg="#80b918",
                                   text=start_text)
