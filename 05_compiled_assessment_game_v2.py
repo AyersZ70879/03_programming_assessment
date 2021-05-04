@@ -347,6 +347,8 @@ class Game:
         capital_guess = str(capital_guess)
         # if left blank
         if capital_guess == "":
+            # Disable stats button
+            self.stats_button.config(state=DISABLED)
             has_errors = "yes"
             error_feedback = "Please do not leave this field blank.\nHINT: The capital starts with the " \
                              "letter '{}'".format(capital_ans[0])
@@ -411,10 +413,23 @@ class Game:
             self.capital_answer.config(text=error_feedback)
 
         # Get Game Stats
+        # set up for percentage correct label
+        # if a round has been won run this code
+        if self.game_stats_list_w[0] != 0:
+            # get percentage (in decimal)
+            percentage = self.game_stats_list_w[0] / get_rounds
+            # get percentage (in percentage)
+            percentage2 = percentage * 100
+        # if no rounds won
+        else:
+            percentage2 = 0
+
+        # Output setup for stats GUI
         display_game_stats = "Questions Answered: {} \n" \
                              "Questions Correct: {} \n" \
-                             "Questions Incorrect: {} \n".format(get_rounds, self.game_stats_list_w[0],
-                                                         self.game_stats_list_l[0])
+                             "Questions Incorrect: {} \n" \
+                             "Percentage Correct: {:.2f}% \n".format(get_rounds, self.game_stats_list_w[0],
+                                                         self.game_stats_list_l[0], percentage2)
 
         self.game_stats_b[0] = display_game_stats
 
